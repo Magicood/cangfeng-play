@@ -1,0 +1,17 @@
+{
+  "name": "藏锋录",
+  "short_name": "藏锋录",
+  "description": "一场瞒过天道的修行 —— 修真 Roguelite 文字游戏",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#12151c",
+  "theme_color": "#12151c",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Crect width='128' height='128' rx='24' fill='%2312151c'/%3E%3Ctext x='64' y='90' font-size='72' text-anchor='middle' fill='%23d9b36a' font-family='serif'%3E%E8%97%8F%3C/text%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "scope": "."
+}
