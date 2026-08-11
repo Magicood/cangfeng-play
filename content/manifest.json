@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "hash": "77ee223b",
+  "totalFiles": 64,
+  "totalBytes": 2850696,
+  "totalGzipBytes": 1001492,
+  "totalEntries": 903,
+  "entriesByKind": {
+    "events": 866,
+    "systems": 20,
+    "souls": 17,
+    "locations": 0
+  },
+  "chunks": [
+    {
+      "id": "events-act12",
+      "label": "第一二幕主线与日常",
+      "file": "events-act12-0d758043.json",
+      "bytes": 435561,
+      "gzipBytes": 153954,
+      "files": 11,
+      "entries": 140,
+      "entriesByKind": {
+        "events": 140,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-act35",
+      "label": "第三至五幕主线与日常",
+      "file": "events-act35-2f7366f0.json",
+      "bytes": 409888,
+      "gzipBytes": 147840,
+      "files": 9,
+      "entries": 127,
+      "entriesByKind": {
+        "events": 127,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-world",
+      "label": "法宝·机缘·结局·势力·气运",
+      "file": "events-world-c734a740.json",
+      "bytes": 332382,
+      "gzipBytes": 119141,
+      "files": 6,
+      "entries": 97,
+      "entriesByKind": {
+        "events": 97,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-path",
+      "label": "功法·心魔·因果·外物·传承·凡途",
+      "file": "events-path-a5e9169c.json",
+      "bytes": 485492,
+      "gzipBytes": 168416,
+      "files": 9,
+      "entries": 127,
+      "entriesByKind": {
+        "events": 127,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-people",
+      "label": "人物·出身·开局·情缘",
+      "file": "events-people-31cc7f99.json",
+      "bytes": 302970,
+      "gzipBytes": 105875,
+      "files": 8,
+      "entries": 107,
+      "entriesByKind": {
+        "events": 107,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-realm",
+      "label": "秘境·宗务·残魂线·奇谭",
+      "file": "events-realm-e8406a81.json",
+      "bytes": 346134,
+      "gzipBytes": 117456,
+      "files": 7,
+      "entries": 113,
+      "entriesByKind": {
+        "events": 113,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "events-sys",
+      "label": "系统面板·签到·战争",
+      "file": "events-sys-761221bf.json",
+      "bytes": 244102,
+      "gzipBytes": 86220,
+      "files": 4,
+      "entries": 74,
+      "entriesByKind": {
+        "events": 74,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0
+      }
+    },
+    {
+      "id": "core",
+      "label": "残魂·金手指定义",
+      "file": "core-059693ee.json",
+      "bytes": 294167,
+      "gzipBytes": 102590,
+      "files": 10,
+      "entries": 118,
+      "entriesByKind": {
+        "events": 81,
+        "systems": 20,
+        "souls": 17,
+        "locations": 0
+      }
+    }
+  ]
+}

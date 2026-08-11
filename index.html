@@ -9,10 +9,127 @@
     <link rel="manifest" href="/cangfeng-play/manifest.webmanifest" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%238c3f2e'/%3E%3Ctext x='16' y='23' font-size='20' text-anchor='middle' fill='%23f3eee3' font-family='serif'%3E%E8%97%8F%3C/text%3E%3C/svg%3E" />
     <title>藏锋录</title>
-    <script type="module" crossorigin src="/cangfeng-play/assets/index-BrfS9Pz3.js"></script>
-    <link rel="stylesheet" crossorigin href="/cangfeng-play/assets/index-CZInzXIP.css">
+
+    <!-- 开场「一炷香」·唯一真源，Loading.tsx 复用不重写；放 head 才不被
+         React 清空 #root 带走。var(--x,回退) 让样式表未到时先有色。 -->
+    <style>
+    :root { background: #0d1117 }
+    @media (prefers-color-scheme: light) { :root { background: #f4f3ef } }
+    /* --p 进度 0~1；--t 动画相位（接手时续上） */
+    .cf-boot {
+      --p: 0; --t: 0s; --ez: .55s cubic-bezier(.22,.61,.36,1);
+      position: fixed; inset: 0; z-index: 60;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: var(--bg, #0d1117); color: var(--ink, #e7e0cf); line-height: 1.6;
+      font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    }
+    .cf-boot::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+      background: radial-gradient(120% 52% at 50% -14%, var(--glow-gold, rgba(217,179,106,.32)), transparent 62%);
+    }
+    .cf-ttl {
+      position: relative; font-size: 2.1rem;
+      letter-spacing: .5em; text-indent: .5em; color: var(--gold-bright, #f2d795);
+      text-shadow: 0 0 26px var(--gold-soft, rgba(217,179,106,.3));
+    }
+    .cf-rule {
+      position: relative; width: 7rem; height: 1px; margin-top: 12px;
+      background: linear-gradient(90deg, transparent, var(--gold-line-strong, rgba(217,179,106,.5)), transparent);
+    }
+    .cf-art { position: relative; width: 186px; height: 279px; margin: 4px 0 }
+    .cf-art svg { display: block; width: 100%; height: 100% }
+    .cf-lbl {
+      position: relative; font-size: .84rem; color: var(--dim, #8d97a9);
+      letter-spacing: .3em; text-indent: .3em;
+    }
+    .cf-bar { position: relative; margin-top: 16px; display: flex; align-items: center; gap: 10px }
+    .cf-trk {
+      position: relative; width: 10.5rem; height: 2px; overflow: hidden;
+      background: var(--gold-soft, rgba(217,179,106,.12));
+    }
+    .cf-fil {
+      position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(var(--p));
+      background: linear-gradient(90deg, var(--gold-deep, #a9853f), var(--gold-bright, #f2d795));
+      transition: transform var(--ez);
+    }
+    /* 进度未知的游标：不伪造数值，只示意在动 */
+    .cf-swp {
+      position: absolute; top: 0; bottom: 0; left: 0; width: 38%; opacity: .5;
+      background: linear-gradient(90deg, transparent, var(--gold, #d9b36a), transparent);
+      animation: cf-swp 2.4s ease-in-out infinite var(--t);
+    }
+    .cf-pct {
+      font-size: .72rem; min-width: 2.7em; text-align: right;
+      color: var(--faint, #606a7c); font-variant-numeric: tabular-nums;
+    }
+    /* 香按 --p 烧短，火头下移，香灰积厚 */
+    .cf-stk, .cf-ash { transform-box: fill-box; transform-origin: 50% 100% }
+    .cf-stk { transform: scaleY(calc(1 - var(--p))); transition: transform var(--ez) }
+    .cf-emb { transform: translateY(calc(var(--p) * 87px)); transition: transform var(--ez) }
+    .cf-ash {
+      transform: scale(calc(.32 + var(--p) * .68)); opacity: calc(.25 + var(--p) * .45);
+      transition: transform var(--ez), opacity .55s linear;
+    }
+    .cf-glo {
+      transform-box: fill-box; transform-origin: 50% 50%; filter: blur(2.6px);
+      animation: cf-br 2.6s ease-in-out infinite var(--t);
+    }
+    .cf-smk {
+      transform-box: fill-box; transform-origin: 50% 100%; opacity: 0;
+      animation: cf-rise 7.2s linear infinite var(--t);
+    }
+    .cf-smk2 { animation-delay: calc(var(--t) - 2.4s) }
+    .cf-smk3 { animation-delay: calc(var(--t) - 4.8s) }
+    @keyframes cf-br { 0%,100% { opacity: .3; transform: scale(.88) } 50% { opacity: .62; transform: scale(1.2) } }
+    @keyframes cf-swp { from { transform: translateX(-110%) } to { transform: translateX(280%) } }
+    @keyframes cf-rise {
+      0% { opacity: 0; transform: translate(0, 0) scale(.65) }
+      20% { opacity: .55 }
+      100% { opacity: 0; transform: translate(5px, -44px) scale(1.6) }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cf-glo { animation: none }
+      .cf-swp { display: none }  /* 停在原地会像一条假的 38% */
+      .cf-smk { animation: none; opacity: .2 }
+      .cf-fil, .cf-stk, .cf-emb, .cf-ash { transition: none }
+    }
+    </style>
+    <script type="module" crossorigin src="/cangfeng-play/assets/index-kQS2yYs7.js"></script>
+    <link rel="modulepreload" crossorigin href="/cangfeng-play/assets/vendor-CdTLCmMN.js">
+    <link rel="stylesheet" crossorigin href="/cangfeng-play/assets/index-BzajKBPi.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="cf-boot" role="progressbar" aria-label="载入中" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="cf-ttl">藏锋录</div>
+        <div class="cf-rule"></div>
+        <div class="cf-art">
+          <svg viewBox="0 0 100 150" aria-hidden="true">
+            <g fill="var(--card-lo,#131a28)" stroke="var(--gold-line-strong,rgba(217,179,106,.5))" stroke-width="1.3">
+              <path d="M25 122c-5.5 1-8 4.5-7.5 7.5s3.5 5 6 5.2M75 122c5.5 1 8 4.5 7.5 7.5s-3.5 5-6 5.2" fill="none" stroke-linecap="round"/>
+              <path d="M29.5 120c.5 13 5.5 21 20.5 21s20-8 20.5-21z"/>
+              <path d="M45.5 140.5h9v4.5h-9zM37.5 145h25v3.5h-25z"/>
+            </g>
+            <rect x="24" y="114.6" width="52" height="5.4" rx="2.7" fill="var(--gold-deep,#a9853f)"/>
+            <path class="cf-ash" d="M41.5 115c1.8-5 15.2-5 17 0z" fill="var(--dim,#8d97a9)"/>
+            <rect class="cf-stk" x="49.1" y="28" width="1.8" height="87" fill="var(--gold-deep,#a9853f)"/>
+            <g class="cf-emb">
+              <circle class="cf-glo" cx="50" cy="28" r="4.6" fill="var(--gold,#d9b36a)"/>
+              <circle cx="50" cy="28" r="1.7" fill="var(--gold-bright,#f2d795)"/>
+              <g fill="none" stroke="var(--dim,#8d97a9)" stroke-width="1" stroke-linecap="round" opacity=".6">
+                <path class="cf-smk" d="M50 24c-3.4-4.6 3-7.6 0-12.4"/>
+                <path class="cf-smk cf-smk2" d="M50 24c3.4-4.6-3-8.4 0-13"/>
+                <path class="cf-smk cf-smk3" d="M50 24c-2-5.6 2.6-8.4 1.2-12.6"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="cf-lbl">正在焚香净手</div>
+        <div class="cf-bar">
+          <div class="cf-trk"><i class="cf-fil"></i><i class="cf-swp"></i></div>
+          <span class="cf-pct">0%</span>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
