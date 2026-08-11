@@ -16,7 +16,7 @@ Error generating stack: `+e.message+`
 `).map(e=>`  ${e}`).join(`
 `)),e.unfinished.length){n(`⑧ 未竟之事`);for(let n of e.unfinished)t.push(`  · ${n}`);t.push(``,`  （这些会跟着你，进入下一局。）`)}return t.push(``),t.join(`
 `)}var It={正道:[`练气`,`筑基`,`金丹`,`元婴`,`化神`,`炼虚`,`合体`,`大乘`,`渡劫`],魔道:[`聚煞`,`魔基`,`魔丹`,`魔婴`,`化魔`,`炼狱`,`魔身`,`大魔`,`魔劫`],鬼道:[`凝魂`,`阴煞`,`鬼将`,`鬼王`,`幽冥`,`阴神`,`冥主`,`鬼帝`,`鬼仙劫`],妖修:[`开智`,`化形`,`妖丹`,`妖将`,`妖王`,`大妖`,`妖圣`,`妖帝`,`妖皇劫`],佛道:[`入门`,`沙弥`,`比丘`,`罗汉`,`菩萨`,`明王`,`尊者`,`古佛`,`涅槃`],儒道:[`开蒙`,`秀才`,`举人`,`进士`,`大儒`,`亚圣`,`文圣`,`至圣`,`立言`],武道:[`淬体`,`洗髓`,`罡气`,`化劲`,`抱丹`,`宗师`,`武圣`,`武神`,`破凡`],散修:[`练气`,`筑基`,`金丹`,`元婴`,`化神`,`炼虚`,`合体`,`大乘`,`渡劫`]},Lt={正道:`金丹`,魔道:`魔丹`,鬼道:`鬼将印`,妖修:`妖丹`,佛道:`舍利`,儒道:`文心`,武道:`丹劲`,散修:`金丹`};function Rt(e,t){return t>=10?`飞升`:(It[e]??It.正道)[t-1]??`位阶${t}`}var zt=[`初期`,`中期`,`后期`,`圆满`];function Bt(e){let t=Rt(e.path,e.tier);if(e.tier===3&&e.goldenCoreGrade>0){let t=Lt[e.path]??`金丹`;return`${e.goldenCoreGrade>=10?`混沌${t}`:`${t}${e.goldenCoreGrade}品`}`}return e.tier>=10?t:`${t}${zt[Math.min(3,Math.floor(e.sublevel*4))]}`}var Vt=`甲乙丙丁戊己庚辛壬癸`,Ht=`子丑寅卯辰巳午未申酉戌亥`,Ut=[`零`,`壹`,`贰`,`叁`,`肆`,`伍`,`陆`,`柒`,`捌`,`玖`];function Wt(e){return`${Vt[e%10]}${Ht[e%12]}·${String(e).split(``).map(e=>Ut[Number(e)]).join(``)}`}function Gt(e,t){let n=Math.max(1,Math.floor(e.createdYear-t+16)),r=n<100?`${n}岁`:`${Math.floor(e.createdYear)}年`,i=e.target;switch(e.type){case`杀戮`:return`${r}，杀${i}${e.weight>45?`，血溅五步`:``}。`;case`救助`:return`${r}，救${i}于危难。`;case`施恩`:return`${r}，施恩于${i}，未求报。`;case`背叛`:return`${r}，负${i}。`;case`夺取`:return`${r}，取${i}之物，其人不甘。`;case`受辱`:return`${r}，为${i}所辱，未即报。`;case`毁诺`:return`${r}，毁与${i}之约。`;case`欺骗`:return`${r}，绐${i}。`;case`传承`:return`${r}，得${i}之遗泽。`;case`放走`:return`${r}，纵${i}去。`;case`立誓`:return`${r}，与${i}立誓。`;case`灭门`:return`${r}，屠${i}满门。`}}function Kt(e){let{actor:t,ledger:n,ending:r}=e,i=[...n].sort((e,t)=>t.weight-e.weight).slice(0,5).sort((e,t)=>e.createdYear-t.createdYear).map(t=>Gt(t,e.birthYear)),a=[`生${t.path===`武道`?`而无灵根`:`具${t.talent.root}`}，${t.origin===`凡俗`?`无所凭恃`:t.originRevealed?`身负「${t.origin}」`:`来历不明`}。`,...i];a.length<6&&a.push(`终，${r.name}。`);let o=Re(t),s=qt(r.grade)+ +(o>=95);return{serial:Wt(e.serialIndex),seed:e.seed,grade:r.grade,ending:r.name,daoName:t.name,finalRealm:Bt(t),perfection:Math.round(o*10)/10,verdictShort:e.verdictShort,lifespan:Math.floor(t.ageMonths/12),inscription:a,marks:{僭越:Math.round(t.僭越),因果:Math.round(n.reduce((e,t)=>e+t.polarity*t.weight,0)),功德:Math.round(t.功德),业障:Math.round(t.业障),藏拙:Math.round(Se(t)*100)/100,堕度:Math.round(t.堕度)},goldFingers:e.goldFingers,rarity:s,createdAtYear:Math.floor(e.diedAtYear)}}function qt(e){switch(e){case`凡碑`:return 1;case`灵碑`:return 2;case`玄碑`:return 3;case`地碑`:return 4;case`天碑`:return 4;case`血道碑`:return 5;case`道碑`:return 5;case`无字碑`:return 5}}function Jt(e){let t=[];t.push(`┌`+`─`.repeat(60)+`┐`);let n=(e=``)=>{t.push(`│ `+e.padEnd(58)+` │`)};n(`${e.grade}  ${`★`.repeat(e.rarity)}`),n(`编号 ${e.serial}`),n(),n(`【${e.ending}】`),n(`${e.daoName} · ${e.finalRealm}`),n(`寿 ${e.lifespan} 载 · 完满度 ${e.perfection}`),n(`「${e.verdictShort}」`),n();for(let t of e.inscription)n(t);return n(),n(`僭越 ${e.marks.僭越} · 因果 ${e.marks.因果} · 功德 ${e.marks.功德}`),n(`业障 ${e.marks.业障} · 藏拙 ${e.marks.藏拙} · 堕度 ${e.marks.堕度}`),n(`金手指：${e.goldFingers.length?e.goldFingers.join(`、`):`无`}`),n(),n(`世界种子 ${e.seed}`),t.push(`└`+`─`.repeat(60)+`┘`),t.join(`
-`)}function Yt(){return{version:1,entries:[],steleCount:0,daoFruit:0,unlockedSystems:[]}}function Xt(e){switch(e.tier){case`飞升`:return`飞升`;case`主宰`:return e.id===`plane_sovereign`?`主宰`:null;case`夭折`:return e.id===`possessed_by_demon`?`魔头`:`尸骸`;case`偏安`:return e.id.startsWith(`local_`)?`传承`:null;case`隐藏`:return e.id===`seclusion`?`隐世`:`飞升`}}function Zt(e,t){e.steleCount++,e.daoFruit+=t.daoFruit;let n=Xt(t.ending);if(!n)return null;let r={kind:n,id:t.stele.serial,daoName:t.actor.name,path:t.actor.path,tier:t.actor.tier,realm:t.stele.finalRealm,inscription:t.stele.inscription,signature:t.signature,place:t.place,relics:t.relics,unfinished:t.unfinished,seed:t.stele.seed,atYear:t.stele.createdAtYear,steleGrade:t.stele.grade};return e.entries.push(r),r}function Qt(e,t){return e.entries.filter(e=>(e.kind===`飞升`||e.kind===`隐世`)&&e.tier<=t)}function $t(e){return e.entries.filter(e=>e.kind===`魔头`||e.kind===`主宰`)}function en(e){return e.entries.filter(e=>e.kind===`尸骸`&&e.relics.length>0)}function tn(e){return e.entries.filter(e=>e.kind===`传承`)}function nn(e){switch(e.kind){case`飞升`:return`一缕残魂自称「${e.daoName}」，说他当年也是从这座山走出去的。\n  「${e.signature}」`;case`主宰`:return`${e.place}的主宰之位上坐着「${e.daoName}」，${e.realm}。已在位 ${e.atYear} 年。`;case`魔头`:return`魔头「${e.daoName}」盘踞${e.place}，用的是一套你莫名眼熟的功法。\n  「${e.signature}」`;case`传承`:return`${e.place}有一处旧洞府，主人姓名已不可考，只留下几个字：「${e.signature}」`;case`尸骸`:return`${e.place}的乱石堆里有一具枯骨，手上戴着一枚储物戒。\n  戒中有：${e.relics.join(`、`)}`;case`隐世`:return`据说${e.place}深处住着一位散功的老者，从不见客。`}}var rn=[`&&`,`||`,`>=`,`<=`,`==`,`!=`,`>`,`<`,`!`,`+`,`-`,`*`,`/`],an=class extends Error{};function on(e){let t=[],n=0;for(;n<e.length;){let r=e[n];if(/\s/.test(r)){n++;continue}if(r===`(`){t.push({kind:`lparen`,value:r,pos:n++});continue}if(r===`)`){t.push({kind:`rparen`,value:r,pos:n++});continue}if(r===`,`){t.push({kind:`comma`,value:r,pos:n++});continue}if(r===`'`||r===`"`){let i=r,a=n+1,o=``;for(;a<e.length&&e[a]!==i;)o+=e[a++];if(a>=e.length)throw new an(`字符串未闭合 @${n}: ${e}`);t.push({kind:`str`,value:o,pos:n}),n=a+1;continue}if(/[0-9]/.test(r)){let r=``;for(;n<e.length&&/[0-9.]/.test(e[n]);)r+=e[n++];t.push({kind:`num`,value:r,pos:n});continue}let i=rn.find(t=>e.startsWith(t,n));if(i){t.push({kind:`op`,value:i,pos:n}),n+=i.length;continue}if(/[\p{L}_]/u.test(r)){let r=``;for(;n<e.length&&/[\p{L}\p{N}_.]/u.test(e[n]);)r+=e[n++];t.push({kind:`ident`,value:r,pos:n});continue}throw new an(`无法识别的字符 '${r}' @${n}: ${e}`)}return t.push({kind:`eof`,value:``,pos:n}),t}var sn=class{toks;i=0;constructor(e){this.toks=on(e)}peek(){return this.toks[this.i]}next(){return this.toks[this.i++]}eat(e,t){let n=this.peek();if(n.kind!==e||t!==void 0&&n.value!==t)throw new an(`期望 ${t??e}，实际 '${n.value}' @${n.pos}`);return this.next()}parse(){let e=this.or();return this.eat(`eof`),e}or(){let e=this.and();for(;this.peek().value===`||`;)this.next(),e={t:`bin`,op:`||`,a:e,b:this.and()};return e}and(){let e=this.cmp();for(;this.peek().value===`&&`;)this.next(),e={t:`bin`,op:`&&`,a:e,b:this.cmp()};return e}cmp(){let e=this.add();for(;[`>`,`>=`,`<`,`<=`,`==`,`!=`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.add()};return e}add(){let e=this.mul();for(;[`+`,`-`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.mul()};return e}mul(){let e=this.unary();for(;[`*`,`/`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.unary()};return e}unary(){return[`!`,`-`].includes(this.peek().value)?{t:`un`,op:this.next().value,a:this.unary()}:this.primary()}primary(){let e=this.peek();if(e.kind===`lparen`){this.next();let e=this.or();return this.eat(`rparen`),e}if(e.kind===`num`)return this.next(),{t:`lit`,v:Number(e.value)};if(e.kind===`str`)return this.next(),{t:`lit`,v:e.value};if(e.kind===`ident`){if(this.next(),e.value===`true`)return{t:`lit`,v:!0};if(e.value===`false`)return{t:`lit`,v:!1};if(e.value===`null`)return{t:`lit`,v:null};if(this.peek().kind===`lparen`){this.next();let t=[];if(this.peek().kind!==`rparen`)for(t.push(this.or());this.peek().kind===`comma`;)this.next(),t.push(this.or());return this.eat(`rparen`),{t:`call`,name:e.value,args:t}}return{t:`path`,p:e.value}}throw new an(`意外的记号 '${e.value}' @${e.pos}`)}};function cn(e){return e!==null&&e!==!1&&e!==0&&e!==``}function ln(e,t){switch(e.t){case`lit`:return e.v;case`path`:return t.get(e.p);case`call`:return t.call(e.name,e.args.map(e=>ln(e,t)));case`un`:{let n=ln(e.a,t);return e.op===`!`?!cn(n):-(Number(n)||0)}case`bin`:{if(e.op===`&&`)return cn(ln(e.a,t))?cn(ln(e.b,t)):!1;if(e.op===`||`)return cn(ln(e.a,t))?!0:cn(ln(e.b,t));let n=ln(e.a,t),r=ln(e.b,t);switch(e.op){case`==`:return n===r;case`!=`:return n!==r;case`>`:return Number(n)>Number(r);case`>=`:return Number(n)>=Number(r);case`<`:return Number(n)<Number(r);case`<=`:return Number(n)<=Number(r);case`+`:return typeof n==`string`||typeof r==`string`?String(n)+String(r):Number(n)+Number(r);case`-`:return Number(n)-Number(r);case`*`:return Number(n)*Number(r);case`/`:return Number(r)===0?0:Number(n)/Number(r);default:throw new an(`未知运算符 ${e.op}`)}}}}var un=new Map;function dn(e){let t=un.get(e);if(t)return t;let n=new sn(e).parse();return un.set(e,n),n}function fn(e,t){return ln(dn(e),t)}function pn(e,t){return!e||e==="default"||cn(fn(e,t))}var mn={tier:e=>e.actor.tier,sublevel:e=>e.actor.sublevel,path:e=>e.actor.path,goldenCoreGrade:e=>e.actor.goldenCoreGrade,hiddenRealmCount:e=>e.actor.hiddenRealms.length,道心:e=>e.actor.道心,气运:e=>e.actor.气运,功德:e=>e.actor.功德,业障:e=>e.actor.业障,僭越:e=>e.actor.僭越,堕度:e=>e.actor.堕度,丹毒:e=>e.actor.丹毒,名望:e=>e.actor.名望,锋芒:e=>e.actor.锋芒,藏拙:e=>Se(e.actor),"talent.root":e=>e.actor.talent.root,"talent.purity":e=>e.actor.talent.purity,"talent.悟性":e=>e.actor.talent.悟性,"talent.根骨":e=>e.actor.talent.根骨,"talent.神魂":e=>e.actor.talent.神魂,"factors.功法":e=>e.actor.factors.功法,"factors.法宝":e=>e.actor.factors.法宝,"factors.状态":e=>e.actor.factors.状态,"factors.灵宠":e=>e.actor.factors.灵宠,"factors.伙伴":e=>e.actor.factors.伙伴,"factors.道侣":e=>e.actor.factors.道侣,"factors.情报":e=>e.actor.factors.情报,"expose.金手指":e=>e.actor.secrets.金手指,"expose.残魂":e=>e.actor.secrets.残魂,"expose.真实修为":e=>e.actor.secrets.真实修为,"expose.身世":e=>e.actor.secrets.身世,"expose.杀过某人":e=>e.actor.secrets.杀过某人,origin:e=>e.actor.origin,originRevealed:e=>e.actor.originRevealed,originClues:e=>e.actor.originClues,year:e=>Math.floor(e.year),tick:e=>e.tick,age:e=>Math.floor(e.actor.ageMonths/12),lifespanLeft:e=>e.actor.lifespanYears-e.actor.ageMonths/12,location:e=>e.location,effectiveTier:e=>xe(e.actor),daoPerfection:e=>Re(e.actor),knowerCount:e=>e.knowers.length,maxExpose:e=>Math.max(...Object.values(e.actor.secrets))},hn={hasSystem:(e,[t])=>e.systems.includes(String(t)),hasAnySystem:e=>e.systems.length>0,hasSoul:(e,[t])=>e.actor.souls.some(e=>e.id===t&&!e.dissipated),soulFavor:(e,[t])=>e.actor.souls.find(e=>e.id===t)?.favor??0,soulPossession:(e,[t])=>e.actor.souls.find(e=>e.id===t)?.possession??0,flag:(e,[t])=>e.flags.has(String(t)),karmaWith:(e,[t])=>e.karmaLedger.filter(e=>!e.resolved&&e.target===t).reduce((e,t)=>e+t.polarity*t.weight,0),unresolvedEvil:e=>e.karmaLedger.filter(e=>!e.resolved&&e.polarity<0).length,seen:(e,[t])=>e.eventHistory.has(String(t)),seenCount:(e,[t])=>e.eventCounts.get(String(t))??0,realmAtLeast:(e,[t])=>e.actor.tier>=Number(t),knows:(e,[t])=>e.knowers.some(e=>e.npc===t),chance:(e,[t])=>e.rng.next()<Number(t),min:(e,t)=>Math.min(...t.map(Number)),max:(e,t)=>Math.max(...t.map(Number))};function gn(e){return{get(t){let n=mn[t];if(!n)throw new an(`未知的字段 '${t}'（不在 scope.ts 白名单内）`);return n(e)},call(t,n){let r=hn[t];if(!r)throw new an(`未知的函数 '${t}()'（不在 scope.ts 白名单内）`);return r(e,n)}}}Object.keys(mn),Object.keys(hn);var _n=class extends Error{},vn={道心:{get:e=>e.actor.道心,set:(e,t)=>{e.actor.道心=A(t,0,100)}},气运:{get:e=>e.actor.气运,set:(e,t)=>{e.actor.气运=A(t,0,100)}},功德:{get:e=>e.actor.功德,set:(e,t)=>{e.actor.功德=Math.max(0,t)}},业障:{get:e=>e.actor.业障,set:(e,t)=>{e.actor.业障=Math.max(0,t)}},僭越:{get:e=>e.actor.僭越,set:(e,t)=>{e.actor.僭越=Math.max(0,t)}},堕度:{get:e=>e.actor.堕度,set:(e,t)=>{e.actor.堕度=A(t,0,100)}},丹毒:{get:e=>e.actor.丹毒,set:(e,t)=>{e.actor.丹毒=A(t,0,100)}},名望:{get:e=>e.actor.名望,set:(e,t)=>{e.actor.名望=A(t,-100,1e3)}},锋芒:{get:e=>e.actor.锋芒,set:(e,t)=>{e.actor.锋芒=Math.max(0,t)}},sublevel:{get:e=>e.actor.sublevel,set:(e,t)=>{e.actor.sublevel=A(t,0,1)}},lifespan:{get:e=>e.actor.lifespanYears,set:(e,t)=>{e.actor.lifespanYears=Math.max(0,t)}},age:{get:e=>e.actor.ageMonths/12,set:(e,t)=>{e.actor.ageMonths=Math.max(0,t*12)}},originClues:{get:e=>e.actor.originClues,set:(e,t)=>{e.actor.originClues=Math.max(0,Math.floor(t))}},悟性:{get:e=>e.actor.talent.悟性,set:(e,t)=>{e.actor.talent.悟性=A(t,1,100)}},根骨:{get:e=>e.actor.talent.根骨,set:(e,t)=>{e.actor.talent.根骨=A(t,1,100)}},神魂:{get:e=>e.actor.talent.神魂,set:(e,t)=>{e.actor.talent.神魂=A(t,1,100)}},纯度:{get:e=>e.actor.talent.purity,set:(e,t)=>{e.actor.talent.purity=A(t,5,100)}}};for(let e of Object.keys(te))vn[`factors.${e}`]={get:t=>t.actor.factors[e],set:(t,n)=>{t.actor.factors[e]=A(n,te[e].min,te[e].max)}};for(let e of[`金手指`,`残魂`,`真实血脉`,`真实修为`,`杀过某人`,`身世`])vn[`expose.${e}`]={get:t=>t.actor.secrets[e],set:(t,n)=>{t.actor.secrets[e]=A(n,0,100)}};function yn(e,t){let n=t.trim();if(!n)return;let r=n.split(/\s+/),i=r[0];switch(i){case`flag`:xn(r[1],n),e.flags.add(r[1]);return;case`unflag`:xn(r[1],n),e.flags.delete(r[1]);return;case`move`:xn(r[1],n),e.location=r[1];return;case`bind.system`:{xn(r[1],n);let t=r[1];e.systems.includes(t)||e.systems.push(t);return}case`bind.soul`:{xn(r[1],n);let t=r[1];e.actor.souls.some(e=>e.id===t)||e.actor.souls.push({id:t,name:t,tier:Math.min(Number(r[2]??9),O.maxTier),favor:0,possession:0,dissipated:!1});return}case`devourSoul`:{xn(r[1],n);let t=nt(e,r[1]);e.flags.add(t.ok?`吞魂成功_${r[1]}`:`吞魂失败_${r[1]}`);return}case`reincarnateSoul`:xn(r[1],n),rt(e,r[1]).ok&&e.flags.add(`送归转世_${r[1]}`);return;case`mergeSoul`:xn(r[1],n),it(e,r[1]).ok&&e.flags.add(`融合共生_${r[1]}`);return;case`witness`:{xn(r[1],n),xn(r[2],n);let t=r[2];if(!ft.includes(t))throw new _n(`未知的秘密类型 '${r[2]}'：${n}`);pt(e,t,8,r[1]);return}case`silence`:xn(r[1],n),gt(e,r[1]);return;case`eraseMemory`:xn(r[1],n),_t(e,r[1]);return;case`fakeDeath`:vt(e);return;case`stepDown`:e.flags.add(`止步`);return}if(i.startsWith(`soul.`)){let t=i.split(`.`);if(t.length!==3)throw new _n(`残魂效果格式应为 soul.<id>.<favor|possession>：${n}`);let[,a,o]=t,s=e.actor.souls.find(e=>e.id===a);if(!s)return;let c=Sn(r[1],n);if(o===`favor`)s.favor=A(s.favor+c,-100,100);else if(o===`possession`)s.possession=A(s.possession+c,0,100);else throw new _n(`残魂无此字段 '${o}'：${n}`);return}let a=vn[i];if(!a)throw new _n(`未知的效果目标 '${i}'（不在 effects.ts 白名单内）：${n}`);let o=r[1];if(o===void 0)throw new _n(`缺少数值：${n}`);o.startsWith(`=`)?a.set(e,Number(o.slice(1))):a.set(e,a.get(e)+Sn(o,n))}function bn(e,t){for(let n of t??[])yn(e,n)}function xn(e,t){if(!e)throw new _n(`缺少参数：${t}`)}function Sn(e,t){if(e===void 0)throw new _n(`缺少数值：${t}`);let n=Number(e);if(Number.isNaN(n))throw new _n(`数值无法解析 '${e}'：${t}`);return n}var Cn=[`flag`,`unflag`,`move`,`bind.system`,`bind.soul`,`devourSoul`,`reincarnateSoul`,`mergeSoul`,`silence`,`eraseMemory`],wn=[`fakeDeath`,`stepDown`];[...Object.keys(vn),...Cn,...wn];function Tn(e,t,n={}){let r=gn(e),i=n.location??e.location,a=[];for(let o of t.events.values()){if(o.location&&o.location!==i)continue;let t=e.eventHistory.get(o.id);t!==void 0&&(o.once||o.cooldown&&e.tick-t<o.cooldown)||n.excludeTags?.length&&o.tags?.some(e=>n.excludeTags.includes(e))||pn(o.cond,r)&&a.push(o)}return a}function En(e,t,n={}){let r=Tn(e,t,n);if(r.length===0)return null;let i=he(e.actor),a=r.map(e=>Math.max(.01,e.weight*(1+i*.25)));return e.rng.weighted(r,a)}function Dn(e,t){if(typeof t.text==`string`)return t.text;if(t.text.length===0)return``;let n=e.eventCounts.get(t.id)??0;return t.text[n%t.text.length]}function On(e,t){let n=gn(e);return t.choices.filter(e=>pn(e.require,n))}function kn(e,t,n){return!n||n===`none`?null:Ue(e,{type:n.type,source:t.id,actor:`player`,target:n.target,weight:n.weight,polarity:n.polarity??-1,matureWindow:n.matureWindow,hooks:n.hooks}).id}function An(e,t,n){if(!n)return{text:``,goto:null,karma:null};bn(e,n.effects);let r=kn(e,t,n.karma);return{text:n.text??``,goto:n.goto??null,karma:r}}function jn(e,t,n){e.eventHistory.set(t.id,e.tick),e.eventCounts.set(t.id,(e.eventCounts.get(t.id)??0)+1);let r=kn(e,t,n.karma);if(!n.check){bn(e,n.effects);let i=An(e,t,n.then);return{outcome:null,text:i.text,goto:i.goto,karmaCreated:i.karma??r}}let i=gn(e),a=Number(fn(n.check.actor,i)),o=Number(fn(n.check.dc,i)),s=ge(e.rng,{power:a,dc:o,scale:n.check.scale,bonus:n.check.bonus},he(e.actor)),c=An(e,t,s===`CRIT_SUCCESS`?n.onCritSuccess??n.onSuccess:s===`SUCCESS`?n.onSuccess:s===`FAIL`?n.onFail:n.onCritFail??n.onFail);return{outcome:s,text:c.text,goto:c.goto,karmaCreated:c.karma??r}}var Mn={你:`亲历（你）`,我:`自述（我）`,他:`说书（道号）`};function Nn(e,t,n=`他`){return t===`你`?e:e.split(`
+`)}function Yt(){return{version:1,entries:[],steleCount:0,daoFruit:0,unlockedSystems:[]}}function Xt(e){switch(e.tier){case`飞升`:return`飞升`;case`主宰`:return e.id===`plane_sovereign`?`主宰`:null;case`夭折`:return e.id===`possessed_by_demon`?`魔头`:`尸骸`;case`偏安`:return e.id.startsWith(`local_`)?`传承`:null;case`隐藏`:return e.id===`seclusion`?`隐世`:`飞升`}}function Zt(e,t){e.steleCount++,e.daoFruit+=t.daoFruit;let n=Xt(t.ending);if(!n)return null;let r={kind:n,id:t.stele.serial,daoName:t.actor.name,path:t.actor.path,tier:t.actor.tier,realm:t.stele.finalRealm,inscription:t.stele.inscription,signature:t.signature,place:t.place,relics:t.relics,unfinished:t.unfinished,seed:t.stele.seed,atYear:t.stele.createdAtYear,steleGrade:t.stele.grade};return e.entries.push(r),r}function Qt(e,t){return e.entries.filter(e=>(e.kind===`飞升`||e.kind===`隐世`)&&e.tier<=t)}function $t(e){return e.entries.filter(e=>e.kind===`魔头`||e.kind===`主宰`)}function en(e){return e.entries.filter(e=>e.kind===`尸骸`&&e.relics.length>0)}function tn(e){return e.entries.filter(e=>e.kind===`传承`)}function nn(e){switch(e.kind){case`飞升`:return`一缕残魂自称「${e.daoName}」，说他当年也是从这座山走出去的。\n  「${e.signature}」`;case`主宰`:return`${e.place}的主宰之位上坐着「${e.daoName}」，${e.realm}。已在位 ${e.atYear} 年。`;case`魔头`:return`魔头「${e.daoName}」盘踞${e.place}，用的是一套你莫名眼熟的功法。\n  「${e.signature}」`;case`传承`:return`${e.place}有一处旧洞府，主人姓名已不可考，只留下几个字：「${e.signature}」`;case`尸骸`:return`${e.place}的乱石堆里有一具枯骨，手上戴着一枚储物戒。\n  戒中有：${e.relics.join(`、`)}`;case`隐世`:return`据说${e.place}深处住着一位散功的老者，从不见客。`}}var rn=[`&&`,`||`,`>=`,`<=`,`==`,`!=`,`>`,`<`,`!`,`+`,`-`,`*`,`/`],an=class extends Error{};function on(e){let t=[],n=0;for(;n<e.length;){let r=e[n];if(/\s/.test(r)){n++;continue}if(r===`(`){t.push({kind:`lparen`,value:r,pos:n++});continue}if(r===`)`){t.push({kind:`rparen`,value:r,pos:n++});continue}if(r===`,`){t.push({kind:`comma`,value:r,pos:n++});continue}if(r===`'`||r===`"`){let i=r,a=n+1,o=``;for(;a<e.length&&e[a]!==i;)o+=e[a++];if(a>=e.length)throw new an(`字符串未闭合 @${n}: ${e}`);t.push({kind:`str`,value:o,pos:n}),n=a+1;continue}if(/[0-9]/.test(r)){let r=``;for(;n<e.length&&/[0-9.]/.test(e[n]);)r+=e[n++];t.push({kind:`num`,value:r,pos:n});continue}let i=rn.find(t=>e.startsWith(t,n));if(i){t.push({kind:`op`,value:i,pos:n}),n+=i.length;continue}if(/[\p{L}_]/u.test(r)){let r=``;for(;n<e.length&&/[\p{L}\p{N}_.]/u.test(e[n]);)r+=e[n++];t.push({kind:`ident`,value:r,pos:n});continue}throw new an(`无法识别的字符 '${r}' @${n}: ${e}`)}return t.push({kind:`eof`,value:``,pos:n}),t}var sn=class{toks;i=0;constructor(e){this.toks=on(e)}peek(){return this.toks[this.i]}next(){return this.toks[this.i++]}eat(e,t){let n=this.peek();if(n.kind!==e||t!==void 0&&n.value!==t)throw new an(`期望 ${t??e}，实际 '${n.value}' @${n.pos}`);return this.next()}parse(){let e=this.or();return this.eat(`eof`),e}or(){let e=this.and();for(;this.peek().value===`||`;)this.next(),e={t:`bin`,op:`||`,a:e,b:this.and()};return e}and(){let e=this.cmp();for(;this.peek().value===`&&`;)this.next(),e={t:`bin`,op:`&&`,a:e,b:this.cmp()};return e}cmp(){let e=this.add();for(;[`>`,`>=`,`<`,`<=`,`==`,`!=`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.add()};return e}add(){let e=this.mul();for(;[`+`,`-`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.mul()};return e}mul(){let e=this.unary();for(;[`*`,`/`].includes(this.peek().value);)e={t:`bin`,op:this.next().value,a:e,b:this.unary()};return e}unary(){return[`!`,`-`].includes(this.peek().value)?{t:`un`,op:this.next().value,a:this.unary()}:this.primary()}primary(){let e=this.peek();if(e.kind===`lparen`){this.next();let e=this.or();return this.eat(`rparen`),e}if(e.kind===`num`)return this.next(),{t:`lit`,v:Number(e.value)};if(e.kind===`str`)return this.next(),{t:`lit`,v:e.value};if(e.kind===`ident`){if(this.next(),e.value===`true`)return{t:`lit`,v:!0};if(e.value===`false`)return{t:`lit`,v:!1};if(e.value===`null`)return{t:`lit`,v:null};if(this.peek().kind===`lparen`){this.next();let t=[];if(this.peek().kind!==`rparen`)for(t.push(this.or());this.peek().kind===`comma`;)this.next(),t.push(this.or());return this.eat(`rparen`),{t:`call`,name:e.value,args:t}}return{t:`path`,p:e.value}}throw new an(`意外的记号 '${e.value}' @${e.pos}`)}};function cn(e){return e!==null&&e!==!1&&e!==0&&e!==``}function ln(e,t){switch(e.t){case`lit`:return e.v;case`path`:return t.get(e.p);case`call`:return t.call(e.name,e.args.map(e=>ln(e,t)));case`un`:{let n=ln(e.a,t);return e.op===`!`?!cn(n):-(Number(n)||0)}case`bin`:{if(e.op===`&&`)return cn(ln(e.a,t))?cn(ln(e.b,t)):!1;if(e.op===`||`)return cn(ln(e.a,t))?!0:cn(ln(e.b,t));let n=ln(e.a,t),r=ln(e.b,t);switch(e.op){case`==`:return n===r;case`!=`:return n!==r;case`>`:return Number(n)>Number(r);case`>=`:return Number(n)>=Number(r);case`<`:return Number(n)<Number(r);case`<=`:return Number(n)<=Number(r);case`+`:return typeof n==`string`||typeof r==`string`?String(n)+String(r):Number(n)+Number(r);case`-`:return Number(n)-Number(r);case`*`:return Number(n)*Number(r);case`/`:return Number(r)===0?0:Number(n)/Number(r);default:throw new an(`未知运算符 ${e.op}`)}}}}var un=new Map;function dn(e){let t=un.get(e);if(t)return t;let n=new sn(e).parse();return un.set(e,n),n}function fn(e,t){return ln(dn(e),t)}function pn(e,t){return!e||e==="default"||cn(fn(e,t))}var mn={tier:e=>e.actor.tier,sublevel:e=>e.actor.sublevel,path:e=>e.actor.path,goldenCoreGrade:e=>e.actor.goldenCoreGrade,hiddenRealmCount:e=>e.actor.hiddenRealms.length,道心:e=>e.actor.道心,气运:e=>e.actor.气运,功德:e=>e.actor.功德,业障:e=>e.actor.业障,僭越:e=>e.actor.僭越,堕度:e=>e.actor.堕度,丹毒:e=>e.actor.丹毒,名望:e=>e.actor.名望,锋芒:e=>e.actor.锋芒,藏拙:e=>Se(e.actor),"talent.root":e=>e.actor.talent.root,"talent.purity":e=>e.actor.talent.purity,"talent.悟性":e=>e.actor.talent.悟性,"talent.根骨":e=>e.actor.talent.根骨,"talent.神魂":e=>e.actor.talent.神魂,"factors.功法":e=>e.actor.factors.功法,"factors.法宝":e=>e.actor.factors.法宝,"factors.状态":e=>e.actor.factors.状态,"factors.灵宠":e=>e.actor.factors.灵宠,"factors.伙伴":e=>e.actor.factors.伙伴,"factors.道侣":e=>e.actor.factors.道侣,"factors.情报":e=>e.actor.factors.情报,"expose.金手指":e=>e.actor.secrets.金手指,"expose.残魂":e=>e.actor.secrets.残魂,"expose.真实修为":e=>e.actor.secrets.真实修为,"expose.身世":e=>e.actor.secrets.身世,"expose.杀过某人":e=>e.actor.secrets.杀过某人,origin:e=>e.actor.origin,originRevealed:e=>e.actor.originRevealed,originClues:e=>e.actor.originClues,year:e=>Math.floor(e.year),tick:e=>e.tick,age:e=>Math.floor(e.actor.ageMonths/12),lifespanLeft:e=>e.actor.lifespanYears-e.actor.ageMonths/12,location:e=>e.location,effectiveTier:e=>xe(e.actor),daoPerfection:e=>Re(e.actor),knowerCount:e=>e.knowers.length,maxExpose:e=>Math.max(...Object.values(e.actor.secrets))},hn={hasSystem:(e,[t])=>e.systems.includes(String(t)),hasAnySystem:e=>e.systems.length>0,hasSoul:(e,[t])=>e.actor.souls.some(e=>e.id===t&&!e.dissipated),soulFavor:(e,[t])=>e.actor.souls.find(e=>e.id===t)?.favor??0,soulPossession:(e,[t])=>e.actor.souls.find(e=>e.id===t)?.possession??0,flag:(e,[t])=>e.flags.has(String(t)),karmaWith:(e,[t])=>e.karmaLedger.filter(e=>!e.resolved&&e.target===t).reduce((e,t)=>e+t.polarity*t.weight,0),unresolvedEvil:e=>e.karmaLedger.filter(e=>!e.resolved&&e.polarity<0).length,seen:(e,[t])=>e.eventHistory.has(String(t)),seenCount:(e,[t])=>e.eventCounts.get(String(t))??0,realmAtLeast:(e,[t])=>e.actor.tier>=Number(t),knows:(e,[t])=>e.knowers.some(e=>e.npc===t),chance:(e,[t])=>e.rng.next()<Number(t),min:(e,t)=>Math.min(...t.map(Number)),max:(e,t)=>Math.max(...t.map(Number))};function gn(e){return{get(t){let n=mn[t];if(!n)throw new an(`未知的字段 '${t}'（不在 scope.ts 白名单内）`);return n(e)},call(t,n){let r=hn[t];if(!r)throw new an(`未知的函数 '${t}()'（不在 scope.ts 白名单内）`);return r(e,n)}}}Object.keys(mn),Object.keys(hn);var _n=class extends Error{},vn={道心:{get:e=>e.actor.道心,set:(e,t)=>{e.actor.道心=A(t,0,100)}},气运:{get:e=>e.actor.气运,set:(e,t)=>{e.actor.气运=A(t,0,100)}},功德:{get:e=>e.actor.功德,set:(e,t)=>{e.actor.功德=Math.max(0,t)}},业障:{get:e=>e.actor.业障,set:(e,t)=>{e.actor.业障=Math.max(0,t)}},僭越:{get:e=>e.actor.僭越,set:(e,t)=>{e.actor.僭越=Math.max(0,t)}},堕度:{get:e=>e.actor.堕度,set:(e,t)=>{e.actor.堕度=A(t,0,100)}},丹毒:{get:e=>e.actor.丹毒,set:(e,t)=>{e.actor.丹毒=A(t,0,100)}},名望:{get:e=>e.actor.名望,set:(e,t)=>{e.actor.名望=A(t,-100,1e3)}},锋芒:{get:e=>e.actor.锋芒,set:(e,t)=>{e.actor.锋芒=Math.max(0,t)}},sublevel:{get:e=>e.actor.sublevel,set:(e,t)=>{e.actor.sublevel=A(t,0,1)}},lifespan:{get:e=>e.actor.lifespanYears,set:(e,t)=>{e.actor.lifespanYears=Math.max(0,t)}},age:{get:e=>e.actor.ageMonths/12,set:(e,t)=>{e.actor.ageMonths=Math.max(0,t*12)}},originClues:{get:e=>e.actor.originClues,set:(e,t)=>{e.actor.originClues=Math.max(0,Math.floor(t))}},悟性:{get:e=>e.actor.talent.悟性,set:(e,t)=>{e.actor.talent.悟性=A(t,1,100)}},根骨:{get:e=>e.actor.talent.根骨,set:(e,t)=>{e.actor.talent.根骨=A(t,1,100)}},神魂:{get:e=>e.actor.talent.神魂,set:(e,t)=>{e.actor.talent.神魂=A(t,1,100)}},纯度:{get:e=>e.actor.talent.purity,set:(e,t)=>{e.actor.talent.purity=A(t,5,100)}}};for(let e of Object.keys(te))vn[`factors.${e}`]={get:t=>t.actor.factors[e],set:(t,n)=>{t.actor.factors[e]=A(n,te[e].min,te[e].max)}};for(let e of[`金手指`,`残魂`,`真实血脉`,`真实修为`,`杀过某人`,`身世`])vn[`expose.${e}`]={get:t=>t.actor.secrets[e],set:(t,n)=>{t.actor.secrets[e]=A(n,0,100)}};function yn(e,t){let n=t.trim();if(!n)return;let r=n.split(/\s+/),i=r[0];switch(i){case`flag`:xn(r[1],n),e.flags.add(r[1]);return;case`unflag`:xn(r[1],n),e.flags.delete(r[1]);return;case`move`:xn(r[1],n),e.location=r[1];return;case`bind.system`:{xn(r[1],n);let t=r[1];e.systems.includes(t)||e.systems.push(t);return}case`bind.soul`:{xn(r[1],n);let t=r[1];e.actor.souls.some(e=>e.id===t)||e.actor.souls.push({id:t,name:t,tier:Math.min(Number(r[2]??9),O.maxTier),favor:0,possession:0,dissipated:!1});return}case`devourSoul`:{xn(r[1],n);let t=nt(e,r[1]);e.flags.add(t.ok?`吞魂成功_${r[1]}`:`吞魂失败_${r[1]}`);return}case`reincarnateSoul`:xn(r[1],n),rt(e,r[1]).ok&&e.flags.add(`送归转世_${r[1]}`);return;case`mergeSoul`:xn(r[1],n),it(e,r[1]).ok&&e.flags.add(`融合共生_${r[1]}`);return;case`witness`:{xn(r[1],n),xn(r[2],n);let t=r[2];if(!ft.includes(t))throw new _n(`未知的秘密类型 '${r[2]}'：${n}`);pt(e,t,8,r[1]);return}case`silence`:xn(r[1],n),gt(e,r[1]);return;case`eraseMemory`:xn(r[1],n),_t(e,r[1]);return;case`fakeDeath`:vt(e);return;case`stepDown`:e.flags.add(`止步`);return}if(i.startsWith(`soul.`)){let t=i.split(`.`);if(t.length!==3)throw new _n(`残魂效果格式应为 soul.<id>.<favor|possession>：${n}`);let[,a,o]=t,s=e.actor.souls.find(e=>e.id===a);if(!s)return;let c=Sn(r[1],n);if(o===`favor`)s.favor=A(s.favor+c,-100,100);else if(o===`possession`)s.possession=A(s.possession+c,0,100);else throw new _n(`残魂无此字段 '${o}'：${n}`);return}let a=vn[i];if(!a)throw new _n(`未知的效果目标 '${i}'（不在 effects.ts 白名单内）：${n}`);let o=r[1];if(o===void 0)throw new _n(`缺少数值：${n}`);o.startsWith(`=`)?a.set(e,Number(o.slice(1))):a.set(e,a.get(e)+Sn(o,n))}function bn(e,t){for(let n of t??[])yn(e,n)}function xn(e,t){if(!e)throw new _n(`缺少参数：${t}`)}function Sn(e,t){if(e===void 0)throw new _n(`缺少数值：${t}`);let n=Number(e);if(Number.isNaN(n))throw new _n(`数值无法解析 '${e}'：${t}`);return n}var Cn=[`flag`,`unflag`,`move`,`bind.system`,`bind.soul`,`devourSoul`,`reincarnateSoul`,`mergeSoul`,`silence`,`eraseMemory`],wn=[`fakeDeath`,`stepDown`];[...Object.keys(vn),...Cn,...wn];function Tn(e,t,n={}){let r=gn(e),i=n.location??e.location,a=[];for(let o of t.events.values()){if(o.location&&o.location!==i||o.mutexGroup&&e.flags.has(`互斥·${o.mutexGroup}`))continue;let t=e.eventHistory.get(o.id);t!==void 0&&(o.once||o.cooldown&&e.tick-t<o.cooldown)||n.excludeTags?.length&&o.tags?.some(e=>n.excludeTags.includes(e))||pn(o.cond,r)&&a.push(o)}return a}function En(e,t,n={}){let r=Tn(e,t,n);if(r.length===0)return null;let i=he(e.actor),a=r.map(e=>Math.max(.01,e.weight*(1+i*.25)));return e.rng.weighted(r,a)}function Dn(e,t){if(typeof t.text==`string`)return t.text;if(t.text.length===0)return``;let n=e.eventCounts.get(t.id)??0;return t.text[n%t.text.length]}function On(e,t){let n=gn(e);return t.choices.filter(e=>pn(e.require,n))}function kn(e,t,n){return!n||n===`none`?null:Ue(e,{type:n.type,source:t.id,actor:`player`,target:n.target,weight:n.weight,polarity:n.polarity??-1,matureWindow:n.matureWindow,hooks:n.hooks}).id}function An(e,t,n){if(!n)return{text:``,goto:null,karma:null};bn(e,n.effects);let r=kn(e,t,n.karma);return{text:n.text??``,goto:n.goto??null,karma:r}}function jn(e,t,n){e.eventHistory.set(t.id,e.tick),e.eventCounts.set(t.id,(e.eventCounts.get(t.id)??0)+1),t.mutexGroup&&e.flags.add(`互斥·${t.mutexGroup}`);let r=kn(e,t,n.karma);if(!n.check){bn(e,n.effects);let i=An(e,t,n.then);return{outcome:null,text:i.text,goto:i.goto,karmaCreated:i.karma??r}}let i=gn(e),a=Number(fn(n.check.actor,i)),o=Number(fn(n.check.dc,i)),s=ge(e.rng,{power:a,dc:o,scale:n.check.scale,bonus:n.check.bonus},he(e.actor)),c=An(e,t,s===`CRIT_SUCCESS`?n.onCritSuccess??n.onSuccess:s===`SUCCESS`?n.onSuccess:s===`FAIL`?n.onFail:n.onCritFail??n.onFail);return{outcome:s,text:c.text,goto:c.goto,karmaCreated:c.karma??r}}var Mn={你:`亲历（你）`,我:`自述（我）`,他:`说书（道号）`};function Nn(e,t,n=`他`){return t===`你`?e:e.split(`
 `).map(e=>e.split(/(「[^」]*」)/).map(e=>e.startsWith(`「`)?e:t===`我`?e.replace(/你们/g,`我们`).replace(/你/g,`我`):e.replace(/你们/g,`几人`).replace(/你/g,n)).join(``)).join(`
 `)}function Pn(e,t){return e===`我`?`我`:e===`他`?t:`你`}function Fn(e,t){return Nn(e,`他`,t)}function In(e,t,n){if(e<2)return null;let r=Math.floor(e);return r<4?[`转过年去，又是一年。`,`两三年一晃而过。`,`此后两年，山中无事。`][r%3]:r<12?`此后${Rn(r)}年，无事。`:r<50?`一晃，便是${Rn(r)}年。`:t>=4?`这一坐，便是${Rn(r)}年。出关那日，${n}认得的凡人，坟头草都换了几茬。`:`${Rn(r)}年过去了。山下已经换了人间。`}var Ln=[`零`,`一`,`二`,`三`,`四`,`五`,`六`,`七`,`八`,`九`];function Rn(e){return e<10?Ln[e]:e<20?`十${e%10?Ln[e%10]:``}`:e<100?`${Ln[Math.floor(e/10)]}十${e%10?Ln[e%10]:``}`:String(e)}var zn=3;function Bn(e){let t=[],n={title:`起于微末`,beats:[]};for(let r of e){let e=r.isMajor&&(r.kind===`scene`||r.kind===`milestone`);e&&n.beats.length>=zn?(t.push(n),n={title:r.title??r.text.slice(0,12),beats:[r]}):(e&&n.beats.length<zn&&r.title&&(n.title=n.beats.length===0?r.title??n.title:`${n.title} · ${r.title}`),n.beats.push(r))}return n.beats.length&&t.push(n),t}function Vn(e,t,n){let r=e.text.trim();if(!r)return null;switch(e.kind){case`scene`:return Nn(r,t,n);case`choice`:return r.startsWith(`「`)?r.replace(/^「【[^】]*】/,`「`):`—— ${Nn(r,t,t===`我`?`我`:`他`)}`;case`outcome`:case`notice`:return Nn(r,t,t===`我`?`我`:`他`);case`milestone`:return`是年，${Nn(r,t,n)}${/[。！？」]$/.test(r)?``:`。`}`}}function Hn(e){let t=new Set,n=[],r=!1;for(let i of e){if(i.kind===`scene`){if(i.evId&&t.has(i.evId)&&!i.isMajor){r=!0;continue}i.evId&&t.add(i.evId),r=!1,n.push(i);continue}(i.kind===`choice`||i.kind===`outcome`)&&r||((i.kind===`milestone`||i.kind===`notice`)&&(r=!1),n.push(i))}return n}function Un(e){let{daoName:t,chronicle:n,stele:r}=e,i=e.pov??`他`,a=[];a.push(`# 藏锋录 · ${t}${i===`我`?`自述`:`卷`}`),a.push(``),a.push(`> ${e.signature}`),a.push(`>`),a.push(`> —— ${t}${n.origin!==`凡俗`&&n.ending.tier!==`夭折`?`，${n.origin}`:``}，寿${Rn(n.lifespan)}载`),a.push(``);let o=Bn(Hn(e.beats)),s=null,c=i===`我`?`我`:t;if(o.forEach((e,n)=>{a.push(`## 第${Rn(n+1)}回 · ${e.title}`),a.push(``);for(let n of e.beats){if(s!==null&&n.kind===`scene`){let e=In(n.year-s,n.tier,c);e&&(a.push(e),a.push(``))}let e=Vn(n,i,t);e&&(a.push(e),a.push(``)),s=n.year}}),a.push(`## 终 · ${n.ending.name}`),a.push(``),i===`我`&&(a.push(`*（自述至此而止。以下数页为后人所补。）*`),a.push(``)),a.push(Fn(n.ending.text,t)),a.push(``),n.deathChain){a.push(`后来有人翻起这段公案，把前因后果排了出来：`),a.push(``);for(let e of n.deathChain.split(`
 `))a.push(`> ${e}`);n.missedWindows.length&&(a.push(`>`),a.push(`> 局中人未曾察觉的是，有${Rn(n.missedWindows.length)}次，事情本可以不是这样。`)),a.push(``)}a.push(`---`),a.push(``),a.push(`## 跋`),a.push(``);for(let e of n.verdict.split(`
@@ -36,8 +36,10 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_houshan_yiwen
+
+    mutexGroup: 金手指
     title: 后山的裂缝
-    weight: 100
+    weight: 68
     act: 1
     once: true
     cond: "tier == 1 && sublevel > 0.15 && !flag('金手指已定')"
@@ -3211,15 +3213,27 @@ events:
 # 制造局与局之间「命运入口」的差异。
 #
 # 结构：
-# · 两条金手指备选链（与幕一后山链靠 flag('金手指已定') 互斥，谁先被抽到谁作数）：
-#     敲门人链（剑）：evt_2s_yeban_qiaomen → evt_2s_duanyun_jiancang（独孤离 / 任务 / 拒绝）
-#     赌坊链（丹）：  evt_2s_dufang_yapiao → evt_2s_kujing_dongfu（苏婆婆 / 面板 / 拒绝）
-#   链首 cond 均含 !flag('金手指已定')；链中卡 cond 亦带该门禁 ——
-#   若两卡间隙被别的链抢先定局，本链自然断掉，不会发出第二个金手指。
+# · 两条两卡链：
+#     敲门人链：evt_2s_yeban_qiaomen → evt_2s_duanyun_jiancang（藏宝图 → 断云涧剑冢）
+#     赌坊链：  evt_2s_dufang_yapiao → evt_2s_kujing_dongfu（押票局 → 枯井洞府）
+#   链尾的常规产出是法宝 / 功法 / 情报 / 因果，人人可取；
+#   独孤离、苏婆婆这类「补发金手指」的出口一律挂 require: !flag('金手指已定') ——
+#   幕一已经定过局的人根本看不见那一行，只有极少数空手走到幕二的人才会撞上。
+#   （链首 cond 不再拿 flag('金手指已定') 挡门，否则整条链在正常局里永远发不出来。）
 # · 五张独立主干大事：界碑私会 / 坊市大火（身世钩子）/ 雪前流民 / 七日护法 / 顶名的人。
 #
+# 局与局的差异靠「档期 + 额度」做，不靠权重碰运气：
+#   早档（sublevel 低）：敲门人 / 押票 / 界碑私会   —— 三选一
+#   中档：              雪前流民 / 坊市大火         —— 二选一
+#   晚档：              七日护法 / 顶名的人         —— 二选一
+# 每档的 cond 里都挂一句 seen(甲) + seen(乙) + … < 1 ——
+# 表达式里布尔按 0/1 相加，等于给每档发一张门票：本档谁先被抽到，本局其余的就此关门。
+# 于是一局稳定撞上两三件大事，撞到哪几件每局不同（3 × 2 × 2 = 12 种组合）。
+# 链尾卡（断云涧 / 枯井）不占额度 —— 一条链算一件事。
+#
 # 跨卡回响（选项岔开落 flag，后续卡凭 flag 多出专属选项）：
-# · 敲门人链：裴照同行 / 杀了裴照 → 剑冢两条专属出路
+# · 敲门人链：裴照同行 → 剑冢「让剑给他」专属出路
+#   （杀了裴照那条不给专属选项，它的回响是链首那个致死钩子「断云涧来的问剑人」）
 # · 赌坊链：识破赌局 → 洞府「调包」出路
 # · 界碑私会：拿捏孟秋池 → 顶名的人「差遣孟秋池」
 # · 坊市大火：火闻其名 → 顶名的人「查大火那夜」
@@ -3228,7 +3242,7 @@ events:
 events:
 
   # ══════════════════════════════════════════════════════════
-  # 备选金手指链 A（剑）· 1/2
+  # 两卡链 A · 1/2 —— 夜半的敲门人
   # ══════════════════════════════════════════════════════════
 
   - id: evt_2s_yeban_qiaomen
@@ -3236,7 +3250,7 @@ events:
     weight: 85
     act: 2
     once: true
-    cond: "tier == 2 && flag('宗门弟子') && !flag('金手指已定')"
+    cond: "tier == 2 && sublevel < 0.45 && !flag('得藏宝图') && seen('evt_2s_dufang_yapiao') + seen('evt_2s_jiebei_sihui') < 1"
     tags: [主干, 机缘, 岔路]
     text: |
       三更天，敲门声。不急，一下，又一下，像抬一次手要攒半天的力气。
@@ -3287,7 +3301,7 @@ events:
           matureWindow: [10, 70]
           hooks:
             - id: 他没死成，记住了你的脸
-            - id: 门前冻毙的尸首，引来巡山弟子的盘问
+            - id: 门前冻毙的尸首，引来了盘问的人
         effects: ["flag 得藏宝图", "flag 拒救裴照", "堕度 +6", "道心 -6", "名望 -2"]
         then:
           text: |
@@ -3332,7 +3346,7 @@ events:
           hooks:
             - id: 他伤愈之后，携图再来敲门
             - id: 图在换药时被医堂的人瞧了去
-        effects: ["flag 金手指已定", "flag 送医裴照", "功德 +8", "道心 +5", "名望 +3", "factors.状态 -0.05"]
+        effects: ["flag 送医裴照", "flag 错过藏宝图", "功德 +8", "道心 +5", "名望 +3", "factors.状态 -0.05"]
         then:
           text: |
             两个时辰山路，到医堂时你后背全是他的血。
@@ -3341,7 +3355,7 @@ events:
 
       - text: 不开门
         karma: none
-        effects: ["flag 金手指已定", "flag 夜不开门", "道心 -4"]
+        effects: ["flag 夜不开门", "flag 错过藏宝图", "道心 -4"]
         then:
           text: |
             「山里夜路，走岔的人多了。」你吹熄灯。
@@ -3349,7 +3363,8 @@ events:
             天亮开门，门前是空的，只有雪上一道拖出去的血痕，往山下去了。
 
   # ══════════════════════════════════════════════════════════
-  # 备选金手指链 A（剑）· 2/2 —— 链尾：独孤离 / 任务 / 拒绝
+  # 两卡链 A · 2/2 —— 断云涧剑冢
+  # 常规产出：法宝 / 功法 / 灵石。补发金手指的那一行挂 require，几乎没人看得见。
   # ══════════════════════════════════════════════════════════
 
   - id: evt_2s_duanyun_jiancang
@@ -3357,17 +3372,81 @@ events:
     weight: 120
     act: 2
     once: true
-    cond: "tier == 2 && flag('得藏宝图') && !flag('金手指已定')"
+    cond: "tier == 2 && flag('得藏宝图')"
     tags: [主干, 机缘, 岔路]
     text: |
       照着桐皮图走了三日，断云涧到了。涧底没有金玉，只有剑。
-      上百柄剑插在黑石里，锈成了上百块碑，风穿过涧口，呜呜地擦着剑身响。
-      正中一柄断剑不锈，只剩半截，剑身凝着一层化不开的寒气。
-      剑前的石案上搁着一枚青玉简，极细的光纹在里面缓缓地转。
-      石案侧面刻着一行小字，笔画瘦得像剑痕——
-      「取剑者承剑，取简者承契。空手来的，空手回。」
+      上百柄剑插在黑石里，锈成了上百块碑。风穿过涧口，呜呜地擦着剑身响。
+      正中一柄断剑不锈，只剩半截，近身三尺，呵气成霜。
+      剑前的石案上压着几片剑经残页，纸让水浸过，只剩起手三行还认得出。
+      案侧刻着一行小字，笔画瘦得像剑痕——
+      「取剑者承剑，读经者承法。空手来的，空手回。」
     choices:
+      - text: 挑一柄没锈透的，拔了带走
+        karma:
+          type: 夺取
+          target: 断云涧群剑
+          weight: 12
+          polarity: -1
+          hooks:
+            - id: 剑冢记得走剑的人
+            - id: 这柄剑在你手里，锈得比在石头里还快
+        effects: ["factors.法宝 +0.12", "flag 断云取剑"]
+        then:
+          text: |
+            你在碑林里走了两趟，挑了柄剑脊还厚的。拔出来时黑石发出一声干裂的响。
+            剑身刮净锈，底下现出四个字：断云门下。
+            回程路上你试了三招，第三招收势时，剑自己往回收了半寸——像有人在替你带手。
+
+      - text: 在剑碑间坐三日，把那三行剑经拓下来
+        karma: none
+        check: { actor: "talent.悟性 + 道心 * 0.3", dc: "68", scale: 11 }
+        onCritSuccess:
+          text: |
+            第三日晨雾散时，三行字在你眼前自己接了下去——不是纸上有，是风里有。
+            你照着涧口的风势走了一趟剑，收势时百来块剑碑同时嗡了一声。
+            下山那天你才发觉，握剑的手比来时稳了。
+          effects: ["factors.功法 +0.14", "悟性 +3", "flag 断云读经"]
+        onSuccess:
+          text: |
+            三日不动，只看那三行。第三日你把它默了下来，一字不差。
+            起手三行是根，往后的路要自己走——这道理你在涧底坐明白了。
+          effects: ["factors.功法 +0.09", "悟性 +1", "flag 断云读经"]
+        onFail:
+          text: |
+            你在涧底坐到第三日，字还是字，风还是风。
+            腹中饥火烧得慌，指尖冻得握不住笔。
+            残页最后被你揣进怀里——什么时候看得懂，什么时候再说。
+          effects: ["factors.状态 -0.1", "道心 -2"]
+
+      - text: 把剑冢的下落卖给坊市收剑的人
+        karma:
+          type: 夺取
+          target: 断云涧群剑
+          weight: 22
+          polarity: -1
+          matureWindow: [10, 70]
+          hooks:
+            - id: 收剑的人来过一趟，涧底空了一半
+            - id: 有人一路查，是谁先卖的图
+        effects: ["factors.法宝 +0.18", "名望 +4", "堕度 +5", "道心 -5", "flag 卖了剑冢"]
+        then:
+          text: |
+            画影图形的桐皮换了六百灵石，收剑的人当场点清，一句多话没有。
+            半月后你路过西街，看见他家门口堆着一车锈剑，正按斤两过秤。
+            秤砣压下去的时候，你想起涧口那阵风。
+
+      - text: 一样不动，退出涧口，把图烧了
+        karma: none
+        effects: ["flag 焚了藏宝图", "道心 +10", "originClues +1"]
+        then:
+          text: |
+            桐皮蜷成一团黑灰。你在涧口回头望了一眼——
+            百来块剑碑立在暮色里，像一群没走成的人。
+            有些东西认下了就是一辈子。你转身下山。
+
       - text: 握住那柄断剑
+        require: "!flag('金手指已定')"
         karma:
           type: 传承
           target: 剑冢老祖·独孤离
@@ -3387,24 +3466,6 @@ events:
             寒气顺着掌纹爬上手腕。你听见一声极轻的冷笑，从骨头里响起来。
             「几百年了，」那声音说，「总算来了个握剑不抖的。」
 
-      - text: 取那枚青玉简
-        karma: none
-        effects: ["flag 金手指已定", "bind.system 任务", "expose.金手指 +3", "僭越 +5"]
-        then:
-          text: |
-            光纹顺着指缝钻进去，一个不带情绪的声音贴着颅骨响起：
-            「载体已确认。当前权柄——任务。首件事务已下发。」
-            你回头看那柄断剑。它还插在原处，寒气纹丝未动，像是根本没把你放在眼里。
-
-      - text: 一样不动，退出涧口，把图烧了
-        karma: none
-        effects: ["flag 金手指已定", "flag 无系统", "flag 焚了藏宝图", "道心 +10", "originClues +1"]
-        then:
-          text: |
-            桐皮蜷成一团黑灰。你在涧口回头望了一眼——
-            百来块剑碑立在暮色里，像一群没走成的人。
-            有些东西认下了就是一辈子。你转身下山。
-
       - text: 「东西是你师门的。你自己拿。」
         require: "flag('裴照同行')"
         karma:
@@ -3416,39 +3477,15 @@ events:
           hooks:
             - id: 断云客欠你一剑，他认
             - id: 那柄剑，未必肯认他
-        effects: ["flag 金手指已定", "flag 无系统", "flag 让剑裴照", "道心 +8", "factors.伙伴 +0.1"]
+        effects: ["flag 让剑裴照", "道心 +8", "factors.伙伴 +0.1"]
         then:
           text: |
             裴照在剑前站了很久，跪下去磕了三个头，才伸手。
             握剑的手背上青筋绷起，寒气爬到肘弯就停了。
             他回头看你，嘴唇动了动，最后只说了两个字：「记下了。」
 
-      - text: 割掌沥血，抹上剑身，骗剑认主
-        require: "flag('杀了裴照')"
-        karma:
-          type: 欺骗
-          target: 剑冢老祖·独孤离
-          weight: 30
-          polarity: -1
-          hooks:
-            - id: 剑认血不认人，这笔账早晚有一问
-            - id: 冢中群剑记下了这一日
-        effects: ["flag 金手指已定"]
-        check: { actor: "talent.神魂 + 道心 * 0.3", dc: "70", scale: 12 }
-        onSuccess:
-          text: |
-            血渗进剑身，寒气顺着伤口倒灌进来，在心口盘成一团。
-            剑认了——或者说，它把裴照的血和你的血一并记下了，连本带利。
-          effects: ["bind.soul 独孤离 9", "soul.独孤离.favor -15", "expose.残魂 +6", "factors.功法 +0.1"]
-        onFail:
-          text: |
-            群剑齐鸣。一道剑气贴着你脖颈掠过去，削断了半边衣领。
-            你连滚带爬出涧口，半边身子麻到入夜。
-            石案上那行小字后头，不知何时多了两个字：「不配。」
-          effects: ["factors.状态 -0.3", "lifespan -1", "flag 剑冢除名"]
-
   # ══════════════════════════════════════════════════════════
-  # 备选金手指链 B（丹）· 1/2
+  # 两卡链 B · 1/2 —— 赌坊设的局
   # ══════════════════════════════════════════════════════════
 
   - id: evt_2s_dufang_yapiao
@@ -3456,7 +3493,7 @@ events:
     weight: 75
     act: 2
     once: true
-    cond: "tier == 2 && 名望 < 60 && !flag('金手指已定')"
+    cond: "tier == 2 && sublevel < 0.5 && 名望 < 60 && seen('evt_2s_yeban_qiaomen') + seen('evt_2s_jiebei_sihui') < 1"
     tags: [主干, 岔路]
     text: |
       下山办货，在坊市西街的赌坊里坐了半个时辰。起头你赢，后来输，再后来，
@@ -3510,7 +3547,7 @@ events:
           hooks:
             - id: 押票转到了收账更狠的人手里
             - id: 赌坊自认倒霉，此事不了了之
-        effects: ["flag 金手指已定", "flag 赖下赌债", "名望 -4", "道心 +2"]
+        effects: ["flag 赖下赌债", "名望 -4", "道心 +2"]
         then:
           text: |
             辛掌柜也不恼，把押票一张张收好，用红绳扎起来。
@@ -3525,7 +3562,7 @@ events:
           hooks:
             - id: 债照还，人两清
             - id: 利滚利，这债越还越厚
-        effects: ["flag 金手指已定", "flag 认下赌债", "factors.法宝 -0.15", "道心 +5"]
+        effects: ["flag 认下赌债", "factors.法宝 -0.15", "道心 +5"]
         then:
           text: |
             「无冤无仇的债，我认。」你把随身的储物袋倒了个底朝天。
@@ -3541,7 +3578,6 @@ events:
           hooks:
             - id: 和记的场子被人当众踩了，这口气他咽不下
             - id: 打服了，坊市反倒传你的名
-        effects: ["flag 金手指已定"]
         check: { actor: "effectiveTier * 45 + factors.状态 * 30", dc: "108", scale: 14 }
         onSuccess:
           text: |
@@ -3555,7 +3591,8 @@ events:
           effects: ["factors.状态 -0.2", "名望 -6", "道心 -5", "flag 屈签押票"]
 
   # ══════════════════════════════════════════════════════════
-  # 备选金手指链 B（丹）· 2/2 —— 链尾：苏婆婆 / 面板 / 拒绝
+  # 两卡链 B · 2/2 —— 枯井下的洞府
+  # 常规产出：法宝 / 情报 / 债务因果。苏婆婆那一行挂 require，正常局看不见。
   # ══════════════════════════════════════════════════════════
 
   - id: evt_2s_kujing_dongfu
@@ -3563,26 +3600,69 @@ events:
     weight: 120
     act: 2
     once: true
-    cond: "tier == 2 && flag('应承辛掌柜') && !flag('金手指已定')"
+    cond: "tier == 2 && flag('应承辛掌柜')"
     tags: [主干, 机缘, 岔路]
     text: |
       井底横着一道石门。门上的禁制老得只剩一口气，却仍认人——
       辛掌柜的人烂在门槛外，铜符递过去，纹丝不动；你空手一推，门开了。
       洞府只有一进。丹房正中，一只豁口药鼎坐在冷了不知多少年的炉上，鼎壁焦黑。
-      炉边靠着一具坐化的尸骨，衣冠齐整，指骨间捏着一枚青玉简。
+      炉边靠着一具坐化的尸骨，衣冠齐整，指骨间捏着一只空药瓶，瓶口朝下。
       你俯身去搬鼎，听见鼎里极轻地响了一声。
       像叹气。
     choices:
       - text: 抱鼎出井，交货，两清
         karma: none
-        effects: ["flag 金手指已定", "flag 交出药鼎", "flag 债已清", "名望 +2", "道心 -4"]
+        effects: ["flag 交出药鼎", "flag 债已清", "名望 +2", "道心 -4"]
         then:
           text: |
             押票当着你的面烧了，火光里辛掌柜的笑纹一动不动。
             你走出赌坊时，袖口还留着那只鼎的凉气。
             那声叹气，你只当没有听见。
 
+      - text: 先冲鼎里问一句：辛掌柜要它做什么
+        karma: none
+        check: { actor: "talent.神魂 + 道心 * 0.3", dc: "66", scale: 11 }
+        onSuccess:
+          text: |
+            你把耳朵贴上焦黑的鼎壁，等到第三炷香。
+            鼎里那口气含混地吐出半句：「……他要炼的不是丹。」
+            后半句没有了。你坐在冷炉边，把这半句翻来覆去想了一夜。
+          effects: ["factors.情报 +0.08", "flag 问出鼎中话"]
+        onFail:
+          text: |
+            你问了三遍，鼎不再响。冷炉里的灰被你的话吹起来一点，又落下去。
+            门槛外那几具尸首中，有一具的手还朝着丹房的方向伸着。
+            你不再问了。
+          effects: ["道心 -2"]
+
+      - text: 鼎不交了。抱着就走
+        karma:
+          type: 毁诺
+          target: 辛掌柜
+          weight: 24
+          polarity: -1
+          matureWindow: [8, 60]
+          hooks:
+            - id: 和记的人循着药味找上门
+            - id: 押票转了手，债主换成了更难说话的人
+        effects: ["flag 私藏药鼎", "flag 失信辛掌柜", "factors.法宝 +0.15", "道心 -2"]
+        then:
+          text: |
+            你把鼎捆在背上，从枯井另一侧的塌口爬了出去，绕城三十里才敢歇。
+            当夜和记的灯亮到天明。第二日坊市贴出一张寻人的帖，画的不是你的脸，
+            是那只鼎——豁口、焦壁，画得分毫不差。
+
+      - text: 一样不动，原路上去
+        karma: none
+        effects: ["flag 认下赌债", "道心 +11", "factors.法宝 -0.12"]
+        then:
+          text: |
+            「井下只有死人。」你对辛掌柜说，「债，我还。」
+            他盯着你看了半晌，忽然笑了，把押票收回怀里。
+            往后三年，你按月往和记送灵石——那洞府里的东西，你一件都不想沾。
+
       - text: 守着鼎，把那口气等出来
+        require: "!flag('金手指已定')"
         karma:
           type: 传承
           target: 药圣·苏婆婆
@@ -3605,31 +3685,6 @@ events:
             「小娃娃，手脚倒干净……外头那个要拿老身炼丹的，你也敢应他的差？」
             你抱起鼎，出井，往城外走。债，回头再算。
 
-      - text: 鼎照交。玉简，你袖了
-        karma: none
-        effects:
-          - "flag 金手指已定"
-          - "bind.system 面板"
-          - "expose.金手指 +3"
-          - "僭越 +5"
-          - "flag 交出药鼎"
-          - "flag 债已清"
-        then:
-          text: |
-            从尸骨指间抽出玉简的那一瞬，光纹钻进掌心，一个不带情绪的声音响起：
-            「载体已确认。当前权柄——面板。」
-            眼前的世界忽然多了一层细字。押票烧尽，辛掌柜捧着鼎笑得很深——
-            你看见他头顶浮着一行小字。红的。
-
-      - text: 一样不动，原路上去
-        karma: none
-        effects: ["flag 金手指已定", "flag 无系统", "flag 认下赌债", "道心 +11", "factors.法宝 -0.12"]
-        then:
-          text: |
-            「井下只有死人。」你对辛掌柜说，「债，我还。」
-            他盯着你看了半晌，忽然笑了，把押票收回怀里。
-            往后三年，你按月往和记送灵石——那洞府里的东西，你一件都不想沾。
-
       - text: 调包。灶下那只裂鼎，一样焦黑
         require: "flag('识破赌局')"
         karma:
@@ -3647,18 +3702,15 @@ events:
                 - { at: -1, evt: "辛掌柜下帖请你吃酒，席设赌坊后院，只摆了一双碗筷", window: true }
             - id: 他验也没验，当着你的面烧了押票
         effects:
-          - "flag 金手指已定"
-          - "bind.soul 苏婆婆 8"
-          - "soul.苏婆婆.favor +20"
-          - "悟性 +3"
-          - "expose.残魂 +3"
+          - "factors.法宝 +0.18"
+          - "悟性 +2"
           - "flag 调包药鼎"
           - "flag 债已清"
         then:
           text: |
             他的人没一个活着见过真鼎——这是你三日里摸清的最后一件事。
             裂鼎出井交差，真鼎捆在井壁的暗龛里。押票烧尽，你夜里折回去取。
-            鼎里那口气哼了一声：「胆子不小。老身生前，最不缺的就是你这号病人。」
+            真鼎搬出井口那一刻，鼎里那口气哼了一声，此后再没响过。
 
   # ══════════════════════════════════════════════════════════
   # 独立大事 · 同门的秘密
@@ -3669,7 +3721,7 @@ events:
     weight: 65
     act: 2
     once: true
-    cond: "tier == 2 && flag('宗门弟子')"
+    cond: "tier == 2 && sublevel < 0.55 && flag('宗门弟子') && seen('evt_2s_yeban_qiaomen') + seen('evt_2s_dufang_yapiao') < 1"
     tags: [主干, 道德, 岔路]
     text: |
       巡山替值，你抄了界碑外的近路，撞见了不该撞见的事。
@@ -3776,10 +3828,10 @@ events:
 
   - id: evt_2s_fangshi_dahuo
     title: 火里喊你名字的人
-    weight: 70
+    weight: 72
     act: 2
     once: true
-    cond: "tier == 2 && sublevel > 0.2"
+    cond: "tier == 2 && sublevel > 0.2 && sublevel < 0.8 && seen('evt_2s_beilai_liumin') < 1"
     tags: [主干, 岔路, 身世]
     text: |
       坊市南街走水。火起在绸庄，风一送，半条街都红了。
@@ -3896,10 +3948,10 @@ events:
 
   - id: evt_2s_beilai_liumin
     title: 雪前的流民
-    weight: 75
+    weight: 68
     act: 2
     once: true
-    cond: "tier == 2 && sublevel > 0.1"
+    cond: "tier == 2 && sublevel > 0.2 && sublevel < 0.75 && seen('evt_2s_fangshi_dahuo') < 1"
     tags: [主干, 道德]
     text: |
       北边三州打起来了。先过境的是溃兵，再过境的就是人——
@@ -3987,10 +4039,10 @@ events:
 
   - id: evt_2s_hufa_qiri
     title: 七日护法
-    weight: 65
+    weight: 60
     act: 2
     once: true
-    cond: "tier == 2 && sublevel > 0.4"
+    cond: "tier == 2 && sublevel > 0.5 && seen('evt_2s_dingming_zhe') < 1"
     tags: [主干, 机缘]
     text: |
       递帖上门的是坊市药铺的掌柜，替人传话。
@@ -4115,10 +4167,10 @@ events:
 
   - id: evt_2s_dingming_zhe
     title: 顶名的人
-    weight: 70
+    weight: 78
     act: 2
     once: true
-    cond: "tier == 2 && sublevel > 0.5 && 名望 >= 10"
+    cond: "tier == 2 && sublevel > 0.5 && 名望 >= 8 && seen('evt_2s_hufa_qiri') < 1"
     tags: [主干, 岔路, 藏拙]
     text: |
       山下传回来的消息越来越离谱：有人顶着你的名号行走三县——
@@ -10390,9 +10442,13 @@ events:
 #   链三「小比的彩头」：黑玉佩夜烫 → 月望认主（独孤离 / 签到 / 拒绝）
 #
 # 跨卡回响（链首选择在链尾开出专属选项）：
-#   链一：链首抽走原页 → 链尾可「物归原主」还图给苏婆婆；链中带了周小乙 → 链尾可只取药渣救他娘
+#   链一：链首撕页藏鞋底 → 链尾可「物归原主」还图给苏婆婆；链中带了周小乙 → 链尾可只取药渣救他娘
+#         链首辨出涂墨小字 → 链中可直探水槽，跳过撬灶
 #   链二：听完五十年的故事 → 链尾可对断剑说「接您回家」
-#   链三：查过来历 / 扔过玉佩 / 卖过玉佩 → 链尾各开一个只属于那条路的应对
+#   链三：查过来历 / 贴身戴过 / 扔过玉佩 / 卖过玉佩 → 链尾各开一个只属于那条路的应对
+#         （四者互斥，单局链尾最多 5 个可见选项）
+#
+# 串接一律走 goto，不靠事件池再抽 —— 避免链首落了 flag、链尾却始终没被抽到的悬空。
 
 events:
 
@@ -10401,11 +10457,13 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gs_cangjingge_jiaye
+
+    mutexGroup: 金手指
     title: 藏经阁的夹页
     weight: 60
     act: 1
     once: true
-    cond: "flag('宗门弟子') && !flag('金手指已定') && tier == 1 && sublevel > 0.15"
+    cond: "tier == 1 && flag('宗门弟子') && !flag('金手指已定') && sublevel > 0.15"
     tags: [主干, 机缘]
     text: |
       轮值扫洒，这月轮到藏经阁外殿。
@@ -10415,7 +10473,7 @@ events:
       图上那座丹房你认得 —— 药圃后头废弃的那座，听说十几年前走了火，再没人修。
       阁中静得很，管事的师叔在前殿打盹。
     choices:
-      - text: 就着窗光把图看熟，原样夹回去
+      - text: 就着天光把图看熟，原样夹回去
         karma: none
         check: { actor: "talent.悟性 + talent.神魂 * 0.3", dc: "56", scale: 10 }
         onCritSuccess:
@@ -10424,18 +10482,21 @@ events:
             辨出了那半行小字：「灶眼为虚，水槽为实」。
             你把纸原样夹回，书线抻直。图已经在你心里了。
           effects: ["flag 记熟夹页", "flag 识破图注", "originClues +1"]
+          goto: evt_gs_danfang_yeyu
         onSuccess:
           text: |
             你把图记进心里，连尺寸都没落下。
             只有那半行涂掉的小字，怎么辨都辨不出 —— 涂的人手很稳，是存心的。
           effects: ["flag 记熟夹页"]
+          goto: evt_gs_danfang_yeyu
         onFail:
           text: |
             前殿的鼾声停了。你匆匆把纸夹回去，抓起扫帚。
             图只记了个大概，有两处方位拿不准 —— 但那座丹房就在药圃后头，总找得到。
           effects: ["flag 记熟夹页", "道心 -1"]
+          goto: evt_gs_danfang_yeyu
 
-      - text: 把那半页纸抽出来，藏进袖中
+      - text: 撕下那半页，塞进鞋底
         karma:
           type: 夺取
           target: 宗门藏经阁
@@ -10447,10 +10508,12 @@ events:
         effects: ["flag 夹页在手", "堕度 +2"]
         then:
           text: |
-            前殿的鼾声停了一下，又续上。
-            你袖着那半页纸走出阁门，日头晃眼，心口那块地方烫得很。
-            回房后你把它压在枕下。夜里对着灯，把涂墨的那半行小字照了又照，
+            撕的那一声比想的响。前殿的鼾声停了一下，又续上。
+            你蹲下去系鞋带，把纸折了三折，垫进左脚的鞋底。
+            走出阁门时日头晃眼，脚底那一点硬，硌得你每一步都记着它。
+            回房脱鞋，纸边已经磨毛了。夜里对着灯，把涂墨的那半行小字照了又照，
             只照出一团死黑。
+          goto: evt_gs_danfang_yeyu
 
       - text: 临一份摹本，原页交给管事师叔
         karma:
@@ -10468,6 +10531,7 @@ events:
             听你答了，随手把它压进一摞待修的残卷底下，夸了你一句老实。
             你袖中的摹本，是趁研墨的工夫一笔一笔描下来的 —— 连那半行涂墨，
             你都照着描了。
+          goto: evt_gs_danfang_yeyu
 
       - text: 原样夹回去，只当没看见
         karma: none
@@ -10498,6 +10562,8 @@ events:
             气色红润得不像当值的人。
 
   - id: evt_gs_danfang_yeyu
+
+    mutexGroup: 金手指
     title: 废丹房的雨夜
     weight: 100
     act: 1
@@ -10594,6 +10660,8 @@ events:
             图上那道往下的墨线，画的究竟是什么。
 
   - id: evt_gs_dijiao_xiaolu
+
+    mutexGroup: 金手指
     title: 地窖里的小炉
     weight: 100
     act: 1
@@ -10739,11 +10807,13 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gs_bingta_muxia
+
+    mutexGroup: 金手指
     title: 病榻下的木匣
     weight: 65
     act: 1
     once: true
-    cond: "flag('宗门弟子') && !flag('金手指已定') && tier == 1 && sublevel > 0.15"
+    cond: "tier == 1 && flag('宗门弟子') && !flag('金手指已定') && sublevel > 0.15"
     tags: [主干, 机缘]
     text: |
       入冬第一场雪，外门执事钱通病倒了。
@@ -10759,7 +10829,7 @@ events:
         karma:
           type: 立誓
           target: 外门执事·钱通
-          weight: 20
+          weight: 35
           polarity: 0
           matureWindow: [10, 60]
           hooks:
@@ -10773,6 +10843,7 @@ events:
             出门时，身后又飘来一句，轻得像自言自语：「……多谢。」
             你在雪地里站了一会儿。
             刻薄了一辈子的钱通，原来也会说这两个字。五日后，他没了。
+          goto: evt_gs_xiazhong_duanjian
 
       - text: 「无功不受禄。这匣子，弟子受不起。」
         karma: none
@@ -10829,6 +10900,8 @@ events:
             后来你路过执事院，总觉得那扇门后头，还有咳嗽声。
 
   - id: evt_gs_wushinian_zhang
+
+    mutexGroup: 金手指
     title: 五十年的账
     weight: 100
     act: 1
@@ -10848,7 +10921,7 @@ events:
         karma:
           type: 立誓
           target: 外门执事·钱通
-          weight: 22
+          weight: 35
           polarity: 1
           matureWindow: [10, 60]
           hooks:
@@ -10862,12 +10935,13 @@ events:
             当夜他睡得很沉，鼾声隔着两重门都听得见。
             侄儿说，这是入冬以来头一回。
             五日后钱通走了，走时脸上是松快的。
+          goto: evt_gs_xiazhong_duanjian
 
       - text: 「五十年了，您怎么不自己送去？」
         karma:
           type: 立誓
           target: 外门执事·钱通
-          weight: 22
+          weight: 35
           polarity: 1
           matureWindow: [10, 60]
           hooks:
@@ -10880,6 +10954,7 @@ events:
             「名是他替我背的，福是我替他享的。我刻薄了一辈子，
             是怕再欠谁的 —— 到头来，还是欠得最多。」
             他闭了闭眼：「你替我走这一趟。我在底下，给他赔罪去。」
+          goto: evt_gs_xiazhong_duanjian
 
       - text: 「这账是您的，不该我背。」起身告辞
         karma: none
@@ -10895,7 +10970,7 @@ events:
         karma:
           type: 立誓
           target: 外门执事·钱通
-          weight: 20
+          weight: 35
           polarity: 0
           matureWindow: [10, 60]
           hooks:
@@ -10909,8 +10984,11 @@ events:
             这里头的东西，见不得风，也见不得人。」
             他盯着你：「出了山，寻个没人的地方。答应我。」
             你答应了。
+          goto: evt_gs_xiazhong_duanjian
 
   - id: evt_gs_xiazhong_duanjian
+
+    mutexGroup: 金手指
     title: 匣中断剑
     weight: 100
     act: 1
@@ -11049,11 +11127,13 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gs_xiaobi_caitou
+
+    mutexGroup: 金手指
     title: 小比的彩头
-    weight: 55
+    weight: 70
     act: 1
     once: true
-    cond: "flag('宗门弟子') && !flag('金手指已定') && tier == 1 && sublevel > 0.15"
+    cond: "tier == 1 && flag('宗门弟子') && !flag('金手指已定') && sublevel > 0.15"
     tags: [主干, 机缘]
     text: |
       岁末外门小比，你本想着走个过场。
@@ -11070,9 +11150,11 @@ events:
             档册翻到蛀得只剩半边的一页：三十七年前，剑峰一位闭关的长老殒了，
             随身之物抄没入库。殒因那一栏，只有涂改过的两个字：「走火」。
           effects: ["flag 玉佩在身", "flag 查过来历", "originClues +1"]
+          goto: evt_gs_heiyu_renzhu
         onFail:
           text: 库房的旧档被虫蛀得七零八落。你翻了两个时辰，只翻出一鼻子霉味。
           effects: ["flag 玉佩在身"]
+          goto: evt_gs_heiyu_renzhu
 
       - text: 用粗布裹了，下山托坊市的老鉴师掌眼
         karma: none
@@ -11083,6 +11165,7 @@ events:
             「剑冢的形制。」他声音压得极低，
             「小友，这东西已经认了你了。收好，别给第二个人看，也别叫它离身。」
             你摸出的灵石，他一块没收。
+          goto: evt_gs_heiyu_renzhu
 
       - text: 夜里拿去后山，扔进涧底
         karma: none
@@ -11094,6 +11177,19 @@ events:
             同屋的都说没见有人进来。
             你捏着这枚凉冰冰的玉佩坐到天亮 —— 它这几日头一回不烫了，
             倒像是……消了气，又憋着气。
+          goto: evt_gs_heiyu_renzhu
+
+      - text: 不查不问，就这么戴上。烫就烫着
+        karma: none
+        effects: ["flag 玉佩在身", "flag 贴身戴过", "factors.状态 -0.05", "道心 +2"]
+        then:
+          text: |
+            头三夜烫得睡不安稳，胸口烙出一片红。第四夜起，它忽然不烫了。
+            往后每夜你都梦见同一处地方：一片朝北的坡地，插满了断剑，
+            剑与剑之间有人走动的脚印，走了几十年，把土踩得比石还硬。
+            醒来时衣裳汗透，胸口那片红也没消。
+            同屋的问你戴的什么，你说：「捡的。」
+          goto: evt_gs_heiyu_renzhu
 
       - text: 上交执事堂，只说彩头有异
         karma:
@@ -11129,8 +11225,11 @@ events:
             「这东西认人。」
             他说完就走，下山的路走得几乎是跑。
             玉佩回到你掌心，温的，像是熨帖了。
+          goto: evt_gs_heiyu_renzhu
 
   - id: evt_gs_heiyu_renzhu
+
+    mutexGroup: 金手指
     title: 黑玉认主
     weight: 100
     act: 1
@@ -11235,6 +11334,31 @@ events:
             你伸出了手。
             「好。」他说，「这就叫敢。」
 
+      - text: 「这一个月，我夜夜梦见一片插满断剑的坡地。那是前辈的家么？」
+        require: "flag('贴身戴过')"
+        karma:
+          type: 传承
+          target: 剑冢老祖·独孤离
+          weight: 30
+          polarity: 1
+          hooks:
+            - id: 剑主认可
+            - id: 梦里的剑冢
+        effects:
+          - "flag 金手指已定"
+          - "bind.soul 独孤离 9"
+          - "soul.独孤离.favor +14"
+          - "expose.残魂 +5"
+          - "factors.功法 +0.1"
+          - "originClues +1"
+        then:
+          text: |
+            虚影久久不语。那两点剑尖似的眼，头一回垂了下去。
+            「三十七年，玉在库房底层，谁也不曾梦见过它。」
+            他抬眼看你：「你贴肉戴了一个月，把老夫的坡地梦全了 ——
+            连脚印都梦见了。那是老夫走的。走了六十年，等人来。」
+            寒光落进你掌心，冷得像雪：「来了。」
+
       - text: 「那夜扔你，是我心里没底。对不住。」
         require: "flag('扔过玉佩')"
         karma:
@@ -11315,6 +11439,8 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gw_baigu_jitan
+
+    mutexGroup: 金手指
     title: 兽骨祭坛
     weight: 100
     act: 1
@@ -11402,6 +11528,8 @@ events:
             驼队过境时你走在最外侧。那点光你没有再看第二眼。
 
   - id: evt_gw_baigu_tanxia
+
+    mutexGroup: 金手指
     title: 骨缝里的光
     weight: 100
     act: 1
@@ -11491,6 +11619,8 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gw_wangxiang_chenguan
+
+    mutexGroup: 金手指
     title: 河底的沉棺
     weight: 100
     act: 1
@@ -11572,6 +11702,8 @@ events:
             「你没开棺？」他问。你摇头。他叹了口气：「那你还能在镇上住很多年。」
 
   - id: evt_gw_wangxiang_guanzhong
+
+    mutexGroup: 金手指
     title: 棺中之物
     weight: 100
     act: 1
@@ -11676,6 +11808,8 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gw_nanjiang_zengli
+
+    mutexGroup: 金手指
     title: 蛊王的赠礼
     weight: 100
     act: 1
@@ -11755,6 +11889,8 @@ events:
             你用那笔钱换了件趁手的东西。夜里偶尔想起，寨里人如今连你的门都绕着走。
 
   - id: evt_gw_nanjiang_xiazhong
+
+    mutexGroup: 金手指
     title: 匣中三寸
     weight: 100
     act: 1
@@ -11848,6 +11984,8 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gw_fudao_liuxiang
+
+    mutexGroup: 金手指
     title: 海上的漂流匣
     weight: 100
     act: 1
@@ -11919,6 +12057,8 @@ events:
             后来风声传回来：邻岛有个捡到它的，没能活过那个月圆。
 
   - id: evt_gw_fudao_huoqi
+
+    mutexGroup: 金手指
     title: 火漆之下
     weight: 100
     act: 1
@@ -12021,6 +12161,8 @@ events:
   # ══════════════════════════════════════════════════════════
 
   - id: evt_gw_juelin_shixia
+
+    mutexGroup: 金手指
     title: 绝壁上的匣子
     weight: 100
     act: 1
@@ -12102,6 +12244,8 @@ events:
             三日后有人看见他独自上了北崖。回来之后，他教拳教得比往常狠了许多。
 
   - id: evt_gw_juelin_wuhui
+
+    mutexGroup: 金手指
     title: 无灰之匣
     weight: 100
     act: 1
