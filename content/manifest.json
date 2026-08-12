@@ -1,135 +1,160 @@
 {
   "version": 1,
-  "hash": "77ee223b",
-  "totalFiles": 64,
-  "totalBytes": 2850696,
-  "totalGzipBytes": 1001492,
-  "totalEntries": 903,
+  "hash": "a8a19dad",
+  "totalFiles": 77,
+  "totalBytes": 3389092,
+  "totalGzipBytes": 1190133,
+  "totalEntries": 1257,
   "entriesByKind": {
-    "events": 866,
+    "events": 1045,
     "systems": 20,
     "souls": 17,
-    "locations": 0
+    "locations": 0,
+    "items": 175
   },
   "chunks": [
     {
       "id": "events-act12",
       "label": "第一二幕主线与日常",
-      "file": "events-act12-0d758043.json",
-      "bytes": 435561,
-      "gzipBytes": 153954,
+      "file": "events-act12-49a75346.json",
+      "bytes": 438974,
+      "gzipBytes": 154922,
       "files": 11,
       "entries": 140,
       "entriesByKind": {
         "events": 140,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-act35",
       "label": "第三至五幕主线与日常",
-      "file": "events-act35-2f7366f0.json",
-      "bytes": 409888,
-      "gzipBytes": 147840,
+      "file": "events-act35-fd54b5a0.json",
+      "bytes": 410844,
+      "gzipBytes": 148205,
       "files": 9,
       "entries": 127,
       "entriesByKind": {
         "events": 127,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-world",
       "label": "法宝·机缘·结局·势力·气运",
-      "file": "events-world-c734a740.json",
-      "bytes": 332382,
-      "gzipBytes": 119141,
-      "files": 6,
-      "entries": 97,
+      "file": "events-world-c38e54da.json",
+      "bytes": 376960,
+      "gzipBytes": 135876,
+      "files": 7,
+      "entries": 121,
       "entriesByKind": {
-        "events": 97,
+        "events": 121,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-path",
-      "label": "功法·心魔·因果·外物·传承·凡途",
-      "file": "events-path-a5e9169c.json",
-      "bytes": 485492,
-      "gzipBytes": 168416,
-      "files": 9,
-      "entries": 127,
+      "label": "功法·心魔·因果·极品入手·后期·外物·传承·凡途",
+      "file": "events-path-ce9d6545.json",
+      "bytes": 881023,
+      "gzipBytes": 304905,
+      "files": 13,
+      "entries": 262,
       "entriesByKind": {
-        "events": 127,
+        "events": 262,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-people",
       "label": "人物·出身·开局·情缘",
-      "file": "events-people-31cc7f99.json",
-      "bytes": 302970,
-      "gzipBytes": 105875,
+      "file": "events-people-887a0601.json",
+      "bytes": 303890,
+      "gzipBytes": 106110,
       "files": 8,
       "entries": 107,
       "entriesByKind": {
         "events": 107,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-realm",
-      "label": "秘境·宗务·残魂线·奇谭",
-      "file": "events-realm-e8406a81.json",
-      "bytes": 346134,
-      "gzipBytes": 117456,
-      "files": 7,
-      "entries": 113,
+      "label": "秘境·宗务·残魂线·俸禄·奇谭",
+      "file": "events-realm-0359f06d.json",
+      "bytes": 391616,
+      "gzipBytes": 134154,
+      "files": 8,
+      "entries": 133,
       "entriesByKind": {
-        "events": 113,
+        "events": 133,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     },
     {
       "id": "events-sys",
       "label": "系统面板·签到·战争",
-      "file": "events-sys-761221bf.json",
-      "bytes": 244102,
-      "gzipBytes": 86220,
+      "file": "events-sys-e1405994.json",
+      "bytes": 244246,
+      "gzipBytes": 86283,
       "files": 4,
       "entries": 74,
       "entriesByKind": {
         "events": 74,
         "systems": 0,
         "souls": 0,
-        "locations": 0
+        "locations": 0,
+        "items": 0
+      }
+    },
+    {
+      "id": "items",
+      "label": "物品真源（含极品）",
+      "file": "items-3a571170.json",
+      "bytes": 47354,
+      "gzipBytes": 17078,
+      "files": 7,
+      "entries": 175,
+      "entriesByKind": {
+        "events": 0,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0,
+        "items": 175
       }
     },
     {
       "id": "core",
       "label": "残魂·金手指定义",
-      "file": "core-059693ee.json",
-      "bytes": 294167,
-      "gzipBytes": 102590,
+      "file": "core-3eeebcdc.json",
+      "bytes": 294185,
+      "gzipBytes": 102600,
       "files": 10,
       "entries": 118,
       "entriesByKind": {
         "events": 81,
         "systems": 20,
         "souls": 17,
-        "locations": 0
+        "locations": 0,
+        "items": 0
       }
     }
   ]
