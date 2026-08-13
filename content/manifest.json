@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "hash": "9ae06435",
-  "totalFiles": 107,
-  "totalBytes": 4893504,
-  "totalGzipBytes": 1751696,
-  "totalEntries": 1880,
+  "hash": "eb105e98",
+  "totalFiles": 110,
+  "totalBytes": 4985344,
+  "totalGzipBytes": 1785201,
+  "totalEntries": 1919,
   "entriesByKind": {
-    "events": 1641,
+    "events": 1680,
     "systems": 20,
     "souls": 17,
     "locations": 0,
@@ -17,9 +17,9 @@
     {
       "id": "events-act12",
       "label": "第一二幕主线与日常",
-      "file": "events-act12-49a75346.json",
-      "bytes": 438974,
-      "gzipBytes": 154922,
+      "file": "events-act12-27b9b2e7.json",
+      "bytes": 439050,
+      "gzipBytes": 154975,
       "files": 11,
       "entries": 140,
       "entriesByKind": {
@@ -34,9 +34,9 @@
     {
       "id": "events-act35",
       "label": "第三至五幕主线与日常",
-      "file": "events-act35-fd54b5a0.json",
-      "bytes": 410844,
-      "gzipBytes": 148205,
+      "file": "events-act35-66f011cf.json",
+      "bytes": 410901,
+      "gzipBytes": 148252,
       "files": 9,
       "entries": 127,
       "entriesByKind": {
@@ -51,13 +51,13 @@
     {
       "id": "events-world",
       "label": "法宝·机缘·结局·势力·气运",
-      "file": "events-world-c38e54da.json",
-      "bytes": 376960,
-      "gzipBytes": 135876,
-      "files": 7,
-      "entries": 121,
+      "file": "events-world-0e2a9a08.json",
+      "bytes": 407180,
+      "gzipBytes": 146884,
+      "files": 8,
+      "entries": 132,
       "entriesByKind": {
-        "events": 121,
+        "events": 132,
         "systems": 0,
         "souls": 0,
         "locations": 0,
@@ -68,9 +68,9 @@
     {
       "id": "events-path",
       "label": "功法·心魔·因果·极品入手·后期·外物·传承·血脉·凡途",
-      "file": "events-path-ba70b532.json",
-      "bytes": 975621,
-      "gzipBytes": 341072,
+      "file": "events-path-772b69bd.json",
+      "bytes": 975953,
+      "gzipBytes": 341245,
       "files": 14,
       "entries": 294,
       "entriesByKind": {
@@ -85,9 +85,9 @@
     {
       "id": "events-people",
       "label": "人物·出身·道途专属·开局·情缘",
-      "file": "events-people-f22ae35e.json",
-      "bytes": 812509,
-      "gzipBytes": 298008,
+      "file": "events-people-70886fa1.json",
+      "bytes": 813033,
+      "gzipBytes": 298253,
       "files": 16,
       "entries": 315,
       "entriesByKind": {
@@ -101,14 +101,14 @@
     },
     {
       "id": "events-realm",
-      "label": "秘境·宗务·门派主线·残魂线·俸禄·奇谭",
-      "file": "events-realm-22c90822.json",
-      "bytes": 1228347,
-      "gzipBytes": 443932,
-      "files": 19,
-      "entries": 489,
+      "label": "秘境·宗务·门派前门与主线·残魂线·修行之姿·俸禄·奇谭",
+      "file": "events-realm-b1b3ee13.json",
+      "bytes": 1288594,
+      "gzipBytes": 465756,
+      "files": 21,
+      "entries": 517,
       "entriesByKind": {
-        "events": 489,
+        "events": 517,
         "systems": 0,
         "souls": 0,
         "locations": 0,
@@ -119,9 +119,9 @@
     {
       "id": "events-sys",
       "label": "系统面板·签到·战争",
-      "file": "events-sys-e1405994.json",
-      "bytes": 244246,
-      "gzipBytes": 86283,
+      "file": "events-sys-184ce668.json",
+      "bytes": 244297,
+      "gzipBytes": 86334,
       "files": 4,
       "entries": 74,
       "entriesByKind": {
@@ -170,9 +170,9 @@
     {
       "id": "core",
       "label": "残魂·金手指定义",
-      "file": "core-3eeebcdc.json",
-      "bytes": 294185,
-      "gzipBytes": 102600,
+      "file": "core-ab504262.json",
+      "bytes": 294518,
+      "gzipBytes": 102704,
       "files": 10,
       "entries": 118,
       "entriesByKind": {
