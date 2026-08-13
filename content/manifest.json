@@ -1,16 +1,17 @@
 {
   "version": 1,
-  "hash": "039439a7",
-  "totalFiles": 86,
-  "totalBytes": 3992309,
-  "totalGzipBytes": 1418198,
-  "totalEntries": 1497,
+  "hash": "9ae06435",
+  "totalFiles": 107,
+  "totalBytes": 4893504,
+  "totalGzipBytes": 1751696,
+  "totalEntries": 1880,
   "entriesByKind": {
-    "events": 1285,
+    "events": 1641,
     "systems": 20,
     "souls": 17,
     "locations": 0,
-    "items": 175
+    "items": 175,
+    "sects": 27
   },
   "chunks": [
     {
@@ -26,7 +27,8 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -42,7 +44,8 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -58,7 +61,8 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -74,7 +78,8 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -90,23 +95,25 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
       "id": "events-realm",
-      "label": "秘境·宗务·残魂线·俸禄·奇谭",
-      "file": "events-realm-0359f06d.json",
-      "bytes": 391616,
-      "gzipBytes": 134154,
-      "files": 8,
-      "entries": 133,
+      "label": "秘境·宗务·门派主线·残魂线·俸禄·奇谭",
+      "file": "events-realm-22c90822.json",
+      "bytes": 1228347,
+      "gzipBytes": 443932,
+      "files": 19,
+      "entries": 489,
       "entriesByKind": {
-        "events": 133,
+        "events": 489,
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -122,7 +129,8 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     },
     {
@@ -138,7 +146,25 @@
         "systems": 0,
         "souls": 0,
         "locations": 0,
-        "items": 175
+        "items": 175,
+        "sects": 0
+      }
+    },
+    {
+      "id": "sects",
+      "label": "门派配置（27 派修饰符层）",
+      "file": "sects-84931b60.json",
+      "bytes": 64464,
+      "gzipBytes": 23720,
+      "files": 10,
+      "entries": 27,
+      "entriesByKind": {
+        "events": 0,
+        "systems": 0,
+        "souls": 0,
+        "locations": 0,
+        "items": 0,
+        "sects": 27
       }
     },
     {
@@ -154,7 +180,8 @@
         "systems": 20,
         "souls": 17,
         "locations": 0,
-        "items": 0
+        "items": 0,
+        "sects": 0
       }
     }
   ]
