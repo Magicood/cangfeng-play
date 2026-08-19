@@ -1,17 +1,18 @@
 {
   "version": 1,
-  "hash": "5bce844f",
-  "totalFiles": 112,
-  "totalBytes": 5210369,
-  "totalGzipBytes": 1858025,
-  "totalEntries": 1994,
+  "hash": "b8e951e0",
+  "totalFiles": 113,
+  "totalBytes": 5244435,
+  "totalGzipBytes": 1868861,
+  "totalEntries": 2183,
   "entriesByKind": {
     "events": 1755,
     "systems": 20,
     "souls": 17,
     "locations": 0,
     "items": 175,
-    "sects": 27
+    "sects": 27,
+    "voices": 189
   },
   "chunks": [
     {
@@ -28,7 +29,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -45,7 +47,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -62,7 +65,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -79,7 +83,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -96,7 +101,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -113,7 +119,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -130,7 +137,8 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -147,7 +155,8 @@
         "souls": 0,
         "locations": 0,
         "items": 175,
-        "sects": 0
+        "sects": 0,
+        "voices": 0
       }
     },
     {
@@ -164,24 +173,26 @@
         "souls": 0,
         "locations": 0,
         "items": 0,
-        "sects": 27
+        "sects": 27,
+        "voices": 0
       }
     },
     {
       "id": "core",
-      "label": "残魂·金手指定义",
-      "file": "core-41b4645a.json",
-      "bytes": 294542,
-      "gzipBytes": 102709,
-      "files": 10,
-      "entries": 118,
+      "label": "残魂·金手指定义·声音档",
+      "file": "core-9063c928.json",
+      "bytes": 328608,
+      "gzipBytes": 113545,
+      "files": 11,
+      "entries": 307,
       "entriesByKind": {
         "events": 81,
         "systems": 20,
         "souls": 17,
         "locations": 0,
         "items": 0,
-        "sects": 0
+        "sects": 0,
+        "voices": 189
       }
     }
   ]
